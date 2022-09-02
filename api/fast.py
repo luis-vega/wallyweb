@@ -1,28 +1,17 @@
 from fastapi import FastAPI, File, UploadFile
 from starlette.responses import Response
 # from model_storage.predict import read_image, prediction
-import uvicorn
-
 import numpy as np
-import pickle
 import cv2
-from model import asd
-
-
+import io
 
 from fastapi import FastAPI, File, UploadFile
 
 app = FastAPI()
 
-
 @app.get("/")
 def index():
     return {"status": "ok"}
-
-
-
-
-
 
 @app.post('/upload_image')
 async def receive_image(img: UploadFile=File(...)):
@@ -38,10 +27,6 @@ async def receive_image(img: UploadFile=File(...)):
     ### Encoding and responding with the image
     im = cv2.imencode('.png', cv2_img)[1] # extension depends on which format is sent from Streamlit
     return Response(content=im.tobytes(), media_type="image/png")
-
-
-
-
 
 
 
