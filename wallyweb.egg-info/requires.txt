@@ -3,7 +3,3 @@ Pillow==9.2.0
 numpy
 tensorflow
 python-multipart
-#cv2
-uvicorn
-opencv-python
-fastapi

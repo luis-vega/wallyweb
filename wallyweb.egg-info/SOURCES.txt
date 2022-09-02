@@ -1,0 +1,11 @@
+setup.py
+api/__init__.py
+api/fast.py
+model_storage/__init__.py
+model_storage/predict.py
+wallyweb.egg-info/PKG-INFO
+wallyweb.egg-info/SOURCES.txt
+wallyweb.egg-info/dependency_links.txt
+wallyweb.egg-info/not-zip-safe
+wallyweb.egg-info/requires.txt
+wallyweb.egg-info/top_level.txt

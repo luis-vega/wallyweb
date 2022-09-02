@@ -1,0 +1,5 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/omerdondu/code/Krastro/wallyweb'
+echo "no tests"
+make: Leaving directory '/home/omerdondu/code/Krastro/wallyweb'
+ 
