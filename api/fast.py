@@ -5,9 +5,6 @@ import numpy as np
 import cv2
 import io
 
-
-
-
 from fastapi import FastAPI, File, UploadFile
 
 app = FastAPI()
