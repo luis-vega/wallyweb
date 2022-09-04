@@ -3,7 +3,7 @@ import cv2
 import time
 import requests
 import numpy as np
-from turtle import onclick
+# from turtle import onclick
 import streamlit as st
 from PIL import Image, ImageDraw
 
@@ -43,7 +43,7 @@ else:
 add_radio = st.sidebar.radio(
     "What Would You Like To Play?",
     ("Against Ai" ,  "Against Time"))
-        
+
 if add_radio == "Against Time":
     timer_selection = st.sidebar.radio(
         "Select time",
@@ -56,8 +56,8 @@ if add_radio == "Against Time":
         timer = 2.0
 
 
-### against ai ###    
-   
+### against ai ###
+
 if add_radio == "Against Ai":
     bt1 = st.sidebar.button("Press To Start/Reset", key="a")
     ph_myself = col1.empty()
@@ -86,17 +86,17 @@ if add_radio == "Against Ai":
                         st.markdown("**Oops**, something went wrong 😓 Please try again.")
                         print(res.status_code, res.content)
 
-                    mm, ss = secs//60, secs%60    
+                    mm, ss = secs//60, secs%60
                     if ai_found == False:
                         amm, ass = secs//60, secs%60
                     ph_myself.metric("Your Time:", f"{mm:02d}:{ss:02d}")
                     ph_ai.metric("Ai Time:", f"{amm:02d}:{ass:02d}")
                     time.sleep(1)
                     user_time = (f"You Found Wally at: {mm:02d}:{ss:02d}")
-                    
+
                     if sol != None :
                         ai_found = True
-                    
+
                     if ai_found == True:
                         st.session_state.against_ai_result = (f"Ai Found Wally at: {amm:02d}:{ass:02d}")
                         ph_ai.empty()
@@ -120,11 +120,11 @@ if add_radio == "Against Ai":
 
             finally:
                 st.session_state.against_ai_user_result = user_time
-                st.session_state.against_ai_result = (f"Ai Found Wally at: {amm:02d}:{ass:02d}")    
+                st.session_state.against_ai_result = (f"Ai Found Wally at: {amm:02d}:{ass:02d}")
     if bt2:
         ph_myself.subheader(st.session_state.against_ai_user_result)
         ph_ai.subheader(st.session_state.against_ai_result)
-        
+
 ### against time ###
 
 elif add_radio == "Against Time":
@@ -154,7 +154,7 @@ elif add_radio == "Against Time":
                     sonuc = N - end
                     if sonuc%60 < 10:
                         sonsonuc = (f"You spent {sonuc//60}:0{sonuc%60}")
-                        
+
                     else:
                         sonsonuc = (f"You spent {sonuc//60}:{sonuc%60}")
                     ph_myself_conc.text(sonsonuc)
@@ -170,7 +170,7 @@ elif add_radio == "Against Time":
                                 draw.ellipse(xy= sol, fill = None , outline ='purple', width= 10)
                                 st.session_state.orginal_image.save("drawn_result.png")
                                 st.image(st.session_state.orginal_image)
-                            
+
 
                         else:
                             st.markdown("**Oops**, something went wrong 😓 Please try again.")
@@ -190,15 +190,14 @@ elif add_radio == "Against Time":
 
 
 
-   
 
 
-            
-                        
-                
-                
+
+
+
+
+
 
 
 ### sidebar image ###
-st.sidebar.image("/home/omerdondu/code/Krastro/wallyweb/images/where-to-next-457477.png", use_column_width=True)
-
+st.sidebar.image("./images/where-to-next-457477.png", use_column_width=True)
