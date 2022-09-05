@@ -1,16 +1,51 @@
 from fastapi import FastAPI, File, UploadFile
-from starlette.responses import Response
+from starlette.responses import Response,StreamingResponse
 # from model_storage.predict import read_image, prediction
 import numpy as np
 import cv2
 import io
 
-
-
+import matplotlib.pyplot as plt
+from PIL import Image
 
 from fastapi import FastAPI, File, UploadFile
+from keras.models import Sequential
+from keras.layers import Dropout, Flatten, Lambda
+from keras.layers import Conv2D, MaxPooling2D
 
 app = FastAPI()
+
+def get_conv(input_shape=(64, 64, 3), filename=None):
+    model = Sequential()
+    model.add(Lambda(lambda x: x / 127.5 - 1., input_shape=input_shape, output_shape=input_shape))
+    model.add(Conv2D(32, (3, 3), activation='relu', name='conv1', input_shape=input_shape, padding="same"))
+    model.add(Conv2D(64, (3, 3), activation='relu', name='conv2', padding="same"))
+    model.add(MaxPooling2D(pool_size=(3, 3)))
+    model.add(Dropout(0.25))
+    model.add(Conv2D(128, (8, 8), activation="relu", name="dense1"))
+    model.add(Dropout(0.5))
+    model.add(Conv2D(1, (14, 14), name="dense2", activation="sigmoid"))
+
+    # for layer in model.layers:
+    #     print(layer.input_shape, layer.output_shape)
+    if filename:
+        model.load_weights(filename)
+    return model
+
+heatmodel = get_conv(input_shape=(None, None, 3), filename="model_storage/localize7.h5")
+def locate(img):
+    num_sub_img = 100
+    data = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    heatmap = heatmodel.predict(data.reshape(1, data.shape[0], data.shape[1], data.shape[2]))
+    xx, yy = np.meshgrid(np.arange(heatmap.shape[2]), np.arange(heatmap.shape[1]))
+    x = (xx[heatmap[0, :, :, 0] > 0.99])
+    y = (yy[heatmap[0, :, :, 0] > 0.99])
+    for i, j in zip(x, y):
+        y_pos = j * 3
+        x_pos = i * 3
+        cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 0, 255), 5)
+    return data, heatmap
+
 
 @app.get("/")
 def index():
@@ -23,132 +58,12 @@ async def receive_image(img: UploadFile=File(...)):
 
     nparr = np.fromstring(contents, np.uint8)
     cv2_img = cv2.imdecode(nparr, cv2.IMREAD_COLOR) # type(cv2_img) => numpy.ndarray
-
+    # cv2_img = cv2.cvtColor(contents, cv2.COLOR_BGR2RGB)
     ### Do cool stuff with your image.... For example face detection
     #annotated_img = annotate_face(cv2_img)
-
+    annotated, heatmap = locate(cv2_img)
+    annotated = cv2.cvtColor(annotated, cv2.COLOR_RGB2BGR)
+    # result = Image.fromarray(annotated)
     ### Encoding and responding with the image
-    im = cv2.imencode('.png', cv2_img)[1] # extension depends on which format is sent from Streamlit
+    im = cv2.imencode('.png', annotated)[1] # extension depends on which format is sent from Streamlit
     return Response(content=im.tobytes(), media_type="image/png")
-
-
-
-
-
-
-
-
-
-
-
-### de aqui para abajo es la ayuda con edmondo
-
-# @app.get("/files/")
-# async def create_file(file: bytes = File(description="A file read as bytes")):
-#     return {"file_size": len(file)}
-
-
-# @app.get("/uploadfile/")
-# async def create_upload_file(
-#     file: UploadFile = File(description="A file read as UploadFile"),
-# ):
-#     return {"filename": file.filename}
-## hasta aqui
-#############
-
-
-
-#####
-### Esto es lo del hindu
-#####
-# @app.get('/')
-# def root_endpoint():
-#     return {'working': True}
-
-# @app.post('/predict')
-# def predict(img_file:UploadFile = File(...)):
-#     input_image = Image.open(img_file.file)
-#     return {'image': img_file}
-#     # model.run_from_filepath
-
-
-# @app.post("/files/")
-# async def create_file(file: bytes = File()):
-#     return {"file_size": len(file)}
-
-
-# @app.post("/uploadfile/")
-# async def create_upload_file(file: UploadFile):
-#     return {"filename": file.filename}
-# @app.post("/files/")
-# async def create_file(file: bytes = File()):
-#     return {"file_size": len(file)}
-
-
-# @app.post("/uploadfile/")
-# async def create_upload_file(file: UploadFile):
-#     return {"filename": file.filename}
-
-####
-# Hasta aca
-####
-
-
-
-
-
-
-
-
-# def load_model():
-#     return f'some model'
-
-# @app.get('/predict')
-# def predict():
-
-#     model = load_model()
-#     y_pred = model + 'and something else'
-
-#     return {'prediction':y_pred}
-
-
-#####
-## de aqui para abajo estoy replazando la anterior funcion para hacerla encajar con el modelo
-#####
-
-
-# @app.get('/predict')
-# def predict():
-#     model = load_model()
-#     y_pred = model.predict(X_s)
-
-#     return {'This is where waldo is':y_pred[0]}
-
-
-#######
-###  try #2
-#######
-
-
-# import os
-
-# from fastapi import FastAPI
-# from fastapi.responses import FileResponse
-
-# app = FastAPI()
-
-# path = "/path/to/files"
-
-# @app.get("/wally_image", responses={200: {"wally_image": "A whole picture of wally.",
-#                                           "content" : {"image/jpeg" :
-#                                               {"example" : "No example available. Just imagine a picture of a vector image."}}}})
-# def image_endpoint():
-#     file_path = os.path.join(path, "files/vector_image.jpg")
-#     if os.path.exists(file_path):
-#         return FileResponse(file_path, media_type="image/jpeg", filename="vector_image_for_you.jpg")
-#     return {"error" : "File not found!"}
-
-
-# @app.get("/items/{item_id}")
-# def read_item(item_id: int, q: Union[str, None] = None):
-#     return {"item_id": item_id, "q": q}
