@@ -29,7 +29,7 @@ def callback():
 
 
 ### image selection ###
-uploaded_file = st.sidebar.file_uploader("Upload your Wally image", accept_multiple_files=False, type=["png", "jpg", "jpeg"])
+uploaded_file = st.sidebar.file_uploader("Upload Your Wally Image", accept_multiple_files=False, type=["png", "jpg", "jpeg"])
 if uploaded_file != None:
     image = Image.open(uploaded_file)
     st.session_state.orginal_image = image
