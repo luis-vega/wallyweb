@@ -3,7 +3,7 @@ import cv2
 import time
 import requests
 import numpy as np
-from turtle import onclick
+# from turtle import onclick
 import streamlit as st
 from PIL import Image, ImageDraw
 
