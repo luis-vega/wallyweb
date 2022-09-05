@@ -6,5 +6,5 @@ python-multipart
 #cv2
 uvicorn
 # opencv-python==4.6.0.66
-opencv-python-headless==4.2.0.32
+opencv-contrib-python-headless
 fastapi
