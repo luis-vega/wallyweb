@@ -1,6 +1,6 @@
 from fastapi import FastAPI, File, UploadFile
-from starlette.responses import Response,StreamingResponse
-# from model_storage.predict import read_image, prediction
+from starlette.responses import Response
+import json
 import numpy as np
 import cv2
 import io
@@ -34,9 +34,9 @@ def get_conv(input_shape=(64, 64, 3), filename=None):
 
 heatmodel = get_conv(input_shape=(None, None, 3), filename="model_storage/localize7.h5")
 def locate(img):
-    num_sub_img = 100
     data = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     heatmap = heatmodel.predict(data.reshape(1, data.shape[0], data.shape[1], data.shape[2]))
+<<<<<<< HEAD
     xx, yy = np.meshgrid(np.arange(heatmap.shape[2]), np.arange(heatmap.shape[1]))
     x = (xx[heatmap[0, :, :, 0] > 0.99])
     y = (yy[heatmap[0, :, :, 0] > 0.99])
@@ -51,6 +51,9 @@ def locate(img):
         # img_new = cv2.addWeighted(ret, 0.1, data, 1 - 0.1, 0)
     # return data, heatmap
     return data, heatmap
+=======
+    return heatmap
+>>>>>>> b9be3a1a99f10b919561ecde1dd8978bc46a4b3e
 
 
 
@@ -62,15 +65,8 @@ def index():
 async def receive_image(img: UploadFile=File(...)):
     ### Receiving image
     contents = await img.read()
-
     nparr = np.fromstring(contents, np.uint8)
     cv2_img = cv2.imdecode(nparr, cv2.IMREAD_COLOR) # type(cv2_img) => numpy.ndarray
-    # cv2_img = cv2.cvtColor(contents, cv2.COLOR_BGR2RGB)
-    ### Do cool stuff with your image.... For example face detection
-    #annotated_img = annotate_face(cv2_img)
-    annotated, heatmap = locate(cv2_img)
-    annotated = cv2.cvtColor(annotated, cv2.COLOR_RGB2BGR)
-    # result = Image.fromarray(annotated)
-    ### Encoding and responding with the image
-    im = cv2.imencode('.png', annotated)[1] # extension depends on which format is sent from Streamlit
-    return Response(content=im.tobytes(), media_type="image/png")
+    heatmap = locate(cv2_img)
+    print(heatmap)
+    return json.dumps(heatmap.tolist())

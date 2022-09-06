@@ -6,8 +6,7 @@ import numpy as np
 # from turtle import onclick
 import streamlit as st
 from PIL import Image, ImageDraw
-
-
+import json
 
 st.set_page_config(
    page_title="Where Is Wally?",
@@ -15,8 +14,12 @@ st.set_page_config(
 )
 st.title("Where Is Wally?")
 
+<<<<<<< HEAD
 url = 'http://127.0.0.1:8000'
 # url = 'https://findwaldo4-bwi4mwxyya-ey.a.run.app/'
+=======
+url = 'http://localhost:8000'
+>>>>>>> b9be3a1a99f10b919561ecde1dd8978bc46a4b3e
 
 ### columns and rows ###
 col1, col2, col3= st.columns(3)
@@ -83,8 +86,8 @@ if add_radio == "Against Ai":
                     # if res.content != None:
                     if res.status_code == 200:
                         ### Response from module ###
-                        sol = res.content
-                        # sol = [(1050,1),(1250,200)]
+                        # sol = res.content
+                        sol = res.json()
                     else:
                         st.markdown("**Oops**, something went wrong 😓 Please try again.")
                         print(res.status_code, res.content)
@@ -127,11 +130,19 @@ if add_radio == "Against Ai":
                             # st.write(f"Maybe Try To Look Closely To The {y} {x}.")
 
                         with col3.expander("I Give Up!"):
-                            #st.image()
-                            # draw = ImageDraw.Draw(st.session_state.orginal_image)
-                            # draw.ellipse(xy= sol, fill = None , outline ='black', width= 10)
-                            # st.session_state.orginal_image.save("drawn_result.png")
-                            st.image(sol)
+                            print(type(image))
+                            heatmap = np.asarray(json.loads(sol))
+                            data=np.array(image)
+                            # data = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2RGB)
+                            xx, yy = np.meshgrid(np.arange(heatmap.shape[2]), np.arange(heatmap.shape[1]))
+                            x = (xx[heatmap[0, :, :, 0] > 0.99])
+                            y = (yy[heatmap[0, :, :, 0] > 0.99])
+                            for i, j in zip(x, y):
+                                y_pos = j * 3
+                                x_pos = i * 3
+                                cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0), 1)
+                            # data = cv2.cvtColor(data, cv2.COLOR_RGB2BGR)
+                            st.image(data)
 
                         for secs in range(mm*60+ss,999*60,+1):
                             mm, ss = secs//60, secs%60
