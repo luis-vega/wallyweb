@@ -14,12 +14,7 @@ st.set_page_config(
 )
 st.title("Where Is Wally?")
 
-<<<<<<< HEAD
-url = 'http://127.0.0.1:8000'
-# url = 'https://findwaldo4-bwi4mwxyya-ey.a.run.app/'
-=======
 url = 'http://localhost:8000'
->>>>>>> b9be3a1a99f10b919561ecde1dd8978bc46a4b3e
 
 ### columns and rows ###
 col1, col2, col3= st.columns(3)

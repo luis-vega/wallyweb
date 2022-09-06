@@ -36,24 +36,7 @@ heatmodel = get_conv(input_shape=(None, None, 3), filename="model_storage/locali
 def locate(img):
     data = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     heatmap = heatmodel.predict(data.reshape(1, data.shape[0], data.shape[1], data.shape[2]))
-<<<<<<< HEAD
-    xx, yy = np.meshgrid(np.arange(heatmap.shape[2]), np.arange(heatmap.shape[1]))
-    x = (xx[heatmap[0, :, :, 0] > 0.99])
-    y = (yy[heatmap[0, :, :, 0] > 0.99])
-    for i, j in zip(x, y):
-        y_pos = j * 3
-        x_pos = i * 3
-        # cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0), 2)
-        # mask = np.zeros(data.shape[:2], dtype="uint8")
-        ret = cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 0, 0), 2)
-        cv2.GaussianBlur(ret, (51,51),0)
-        # img_new = cv2.bitwise_and(data, data, mask=mask)
-        # img_new = cv2.addWeighted(ret, 0.1, data, 1 - 0.1, 0)
-    # return data, heatmap
-    return data, heatmap
-=======
     return heatmap
->>>>>>> b9be3a1a99f10b919561ecde1dd8978bc46a4b3e
 
 
 
