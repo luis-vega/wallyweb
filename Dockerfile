@@ -11,5 +11,5 @@ RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 RUN pip install .
 
-CMD uvicorn whereswally.api.fast:app --host 0.0.0.0 --port $PORT
-CMD streamlit run app.py --host 0.0.0.0 --port $PORT
+CMD uvicorn api.fast:app --host 0.0.0.0 --port $PORT
+#CMD streamlit run app.py --host 0.0.0.0 --port $PORT
