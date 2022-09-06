@@ -33,8 +33,7 @@ def callback():
 uploaded_file = st.sidebar.file_uploader("Upload Your Wally Image", accept_multiple_files=False, type=["png", "jpg", "jpeg"])
 if uploaded_file != None:
     image = Image.open(uploaded_file)
-    st.session_state.orginal_image = image
-    st.image(image)
+    st.session_state.orginal_image = st.image(image)
     img_bytes = uploaded_file.getvalue()
 else:
     if 'orginal_image' not in st.session_state:
@@ -68,17 +67,17 @@ if add_radio == "Against Ai":
         st.session_state.result = None
     bt2 = col2.button("Found Wally", key="b")
     if bt1:
-        try:
-            ### Using api to reach model ###
-            title.title("Ai Is Working On It")
-            start = dt.datetime.now()
-            res = requests.post(url + "/upload_image", files={'img': img_bytes})
-            ###
-        except:
-            pass
         if st.session_state.orginal_image == None:
             st.title("You Might Forgot To Upload Your Image")
         else:
+            try:
+                ### Using api to reach model ###
+                title.title("Ai Is Working On It")
+                start = dt.datetime.now()
+                res = requests.post(url + "/upload_image", files={'img': img_bytes})
+                ###
+            except:
+                pass
             try:
                 for secs in range(0,999*60,+1):
                     #start = dt.datetime.now()
@@ -86,6 +85,7 @@ if add_radio == "Against Ai":
                     if res.status_code == 200:
                         ### Response from module ###
                         sol = res.content
+                        st.session_state.sol = sol
                         #sol = [(1050,1),(1250,200)]
                     else:
                         st.markdown("**Oops**, something went wrong 😓 Please try again.")
@@ -150,6 +150,9 @@ if add_radio == "Against Ai":
         try:
             ph_myself.subheader(st.session_state.against_ai_user_result)
             ph_ai.subheader(st.session_state.against_ai_result)
+            st.session_state.orginal_image.empty()
+            st.image(st.session_state.sol)
+
         except:
             st.title("Try To Start The Game First")
         
