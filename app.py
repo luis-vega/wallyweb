@@ -2,6 +2,7 @@ import os
 import cv2
 import time
 import requests
+import datetime as dt
 import numpy as np
 from turtle import onclick
 import streamlit as st
@@ -13,7 +14,7 @@ st.set_page_config(
    page_title="Where Is Wally?",
    page_icon= '🖼️'
 )
-st.title("Where Is Wally?")
+title = st.title("Where Is Wally?")
 
 url = 'http://localhost:8000'
 
@@ -69,6 +70,8 @@ if add_radio == "Against Ai":
     if bt1:
         try:
             ### Using api to reach model ###
+            title.title("Ai Is Working On It")
+            start = dt.datetime.now()
             res = requests.post(url + "/upload_image", files={'img': img_bytes})
             ###
         except:
@@ -78,55 +81,59 @@ if add_radio == "Against Ai":
         else:
             try:
                 for secs in range(0,999*60,+1):
+                    #start = dt.datetime.now()
+                    #title.title("Ai Is Working On It")
                     if res.status_code == 200:
                         ### Response from module ###
-                        #sol = res.content
-                        sol = [(1050,1),(1250,200)]
+                        sol = res.content
+                        #sol = [(1050,1),(1250,200)]
                     else:
                         st.markdown("**Oops**, something went wrong 😓 Please try again.")
                         print(res.status_code, res.content)
 
                     mm, ss = secs//60, secs%60    
-                    if ai_found == False:
-                        amm, ass = secs//60, secs%60
+                    #if ai_found == False:
+                    #    amm, ass = secs//60, secs%60
                     ph_myself.metric("Your Time:", f"{mm:02d}:{ss:02d}")
-                    ph_ai.metric("Ai Time:", f"{amm:02d}:{ass:02d}")
+                    #ph_ai.metric("Ai Time:", f"{amm:02d}:{ass:02d}")
                     time.sleep(1)
                     user_time = (f"You Found Wally at: {mm:02d}:{ss:02d}")
                     
                     if sol != None :
                         ai_found = True
+                        title.title("Where Is Wally?")
                     
                     if ai_found == True:
-                        st.session_state.against_ai_result = (f"Ai Found Wally at: {amm:02d}:{ass:02d}")
+                        time_sp = str(dt.datetime.now() - start).replace("0:", "" , 1).replace(".", ":")
+                        st.session_state.against_ai_result = (f"Ai Found Wally in: {time_sp}")
                         ph_ai.empty()
                         ph_ai.subheader(st.session_state.against_ai_result)
-                        with col1.expander("Need Some Help?"):
-                            img_size = st.session_state.orginal_image.size
-                            #if any of the cords is 0 it messes up but don't have time to solve it
-                            cord_x = sol[0][0]/img_size[0]
-                            cord_y = sol[0][1]/img_size[1]
-                            if cord_x < 0.37:
-                                x = "Left"
-                            elif 0.37 <= cord_x < 0.53:
-                                x = "Middle"
-                            else:
-                                x = "Right"
-                            if cord_y < 0.37:
-                                y = "Top"
-                            elif 0.37 <= cord_x < 0.53:
-                                y = "Middle"
-                            else:
-                                y = "Bottom"
+                        # with col1.expander("Need Some Help?"):
+                        #     img_size = st.session_state.orginal_image.size
+                        #     #if any of the cords is 0 it messes up but don't have time to solve it
+                        #     cord_x = sol[0][0]/img_size[0]
+                        #     cord_y = sol[0][1]/img_size[1]
+                        #     if cord_x < 0.37:
+                        #         x = "Left"
+                        #     elif 0.37 <= cord_x < 0.53:
+                        #         x = "Middle"
+                        #     else:
+                        #         x = "Right"
+                        #     if cord_y < 0.37:
+                        #         y = "Top"
+                        #     elif 0.37 <= cord_x < 0.53:
+                        #         y = "Middle"
+                        #     else:
+                        #         y = "Bottom"
 
-                            st.write(f"Maybe Try To Look Closely To The {y} {x}.")
+                        #     st.write(f"Maybe Try To Look Closely To The {y} {x}.")
 
                         with col3.expander("I Give Up!"):
-                            #st.image()
-                            draw = ImageDraw.Draw(st.session_state.orginal_image)
-                            draw.ellipse(xy= sol, fill = None , outline ='black', width= 10)
-                            st.session_state.orginal_image.save("drawn_result.png")
-                            st.image(st.session_state.orginal_image)
+                            st.image(res.content)
+                            # draw = ImageDraw.Draw(st.session_state.orginal_image)
+                            # draw.ellipse(xy= sol, fill = None , outline ='black', width= 10)
+                            # st.session_state.orginal_image.save("drawn_result.png")
+                            # st.image(st.session_state.orginal_image)
 
                         for secs in range(mm*60+ss,999*60,+1):
                             mm, ss = secs//60, secs%60
@@ -138,7 +145,7 @@ if add_radio == "Against Ai":
 
             finally:
                 st.session_state.against_ai_user_result = user_time
-                st.session_state.against_ai_result = (f"Ai Found Wally at: {amm:02d}:{ass:02d}")    
+                #st.session_state.against_ai_result = (f"Ai Found Wally at: {amm:02d}:{ass:02d}")    
     if bt2:
         try:
             ph_myself.subheader(st.session_state.against_ai_user_result)
@@ -156,12 +163,6 @@ elif add_radio == "Against Time":
         st.session_state.against_time_result = None
     bt2 = col1.button("Found Wally", key="b")
     if bt1:
-        try:
-            ### Using api to reach model ###
-            res = requests.post(url + "/upload_image", files={'img': img_bytes})
-            ###
-        except:
-            pass
         if st.session_state.orginal_image == None:
             st.title("You Might Forgot To Upload Your Image")
         else:
@@ -180,17 +181,18 @@ elif add_radio == "Against Time":
                         sonsonuc = (f"You spent {sonuc//60}:{sonuc%60}")
                     ph_myself_conc.text(sonsonuc)
                     if secs == 0:
+                        ### Using api to reach model ###
+                        res = requests.post(url + "/upload_image", files={'img': img_bytes})
                         st.title("Time Is Up!")
                         if res.status_code == 200:
-                            ### Response from module ###
-                            #sol = res.content
-                            sol = [(1050,0),(1250,200)]
+                            sol = res.content
+                            #sol = [(1050,0),(1250,200)]
                             with col3.expander("Where is he?"):
-                                #st.image()
-                                draw = ImageDraw.Draw(st.session_state.orginal_image)
-                                draw.ellipse(xy= sol, fill = None , outline ='purple', width= 10)
-                                st.session_state.orginal_image.save("drawn_result.png")
-                                st.image(st.session_state.orginal_image)
+                                st.image(res.content)
+                                # draw = ImageDraw.Draw(st.session_state.orginal_image)
+                                # draw.ellipse(xy= sol, fill = None , outline ='purple', width= 10)
+                                # st.session_state.orginal_image.save("drawn_result.png")
+                                # st.image(st.session_state.orginal_image)
                             
 
                         else:
