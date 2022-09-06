@@ -144,16 +144,8 @@ if add_radio == "Against Ai":
                 st.session_state.against_ai_user_result = user_time
                 st.session_state.against_ai_result = (f"Ai Found Wally at: {amm:02d}:{ass:02d}")
     if bt2:
-<<<<<<< HEAD
         ph_myself.subheader(st.session_state.against_ai_user_result)
         ph_ai.subheader(st.session_state.against_ai_result)
-=======
-        try:
-            ph_myself.subheader(st.session_state.against_ai_user_result)
-            ph_ai.subheader(st.session_state.against_ai_result)
-        except:
-            st.title("Try To Start The Game First")
->>>>>>> 19f92c579f3ee1a2743d8823fbe4828a864e6755
 
 ### against time ###
 
@@ -232,14 +224,11 @@ elif add_radio == "Against Time":
 
 
 
-<<<<<<< HEAD
 
 
 
 
 
-=======
->>>>>>> 19f92c579f3ee1a2743d8823fbe4828a864e6755
 
 
 ### sidebar image ###
