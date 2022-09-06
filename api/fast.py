@@ -43,8 +43,15 @@ def locate(img):
     for i, j in zip(x, y):
         y_pos = j * 3
         x_pos = i * 3
-        cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 0, 255), 5)
+        # cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0), 2)
+        # mask = np.zeros(data.shape[:2], dtype="uint8")
+        ret = cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 0, 0), 2)
+        cv2.GaussianBlur(ret, (51,51),0)
+        # img_new = cv2.bitwise_and(data, data, mask=mask)
+        # img_new = cv2.addWeighted(ret, 0.1, data, 1 - 0.1, 0)
+    # return data, heatmap
     return data, heatmap
+
 
 
 @app.get("/")
