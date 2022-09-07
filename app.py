@@ -109,7 +109,7 @@ if add_radio == "Against AI":
                     ph_myself.metric("Your Time:", f"{mm:02d}:{ss:02d}")
                     #ph_ai.metric("Ai Time:", f"{amm:02d}:{ass:02d}")
                     time.sleep(1)
-                    user_time = (f"You Found Wally at: {mm:02d}:{ss:02d}")
+                    user_time = (f"You Found Wally At: {mm:02d}:{ss:02d}")
                     
                     if sol != None :
                         ai_found = True
@@ -122,7 +122,7 @@ if add_radio == "Against AI":
                         for q in time_sp:
                             if time_sp.index(q)==5:
                                 q = q-2
-                        st.session_state.against_ai_result = (f"AI Found Wally in: {time_sp}")
+                        st.session_state.against_ai_result = (f"AI Found Wally In: {time_sp}")
                         ph_ai.empty()
                         ph_ai.subheader(st.session_state.against_ai_result)
                         # with col1.expander("Need Some Help?"):
@@ -146,7 +146,7 @@ if add_radio == "Against AI":
                         #     st.write(f"Maybe Try To Look Closely To The {y} {x}.")
 
                         with col3.expander("I Give Up!"):
-                            st.image(res.content,use_column_width= "always")
+                            st.image(res.content)
                             # draw = ImageDraw.Draw(st.session_state.orginal_image)
                             # draw.ellipse(xy= sol, fill = None , outline ='black', width= 10)
                             # st.session_state.orginal_image.save("drawn_result.png")
@@ -156,7 +156,7 @@ if add_radio == "Against AI":
                             mm, ss = secs//60, secs%60
                             ph_myself.metric("Your Time:", f"{mm:02d}:{ss:02d}")
                             time.sleep(1)
-                            user_time = (f"You Found Wally at: {mm:02d}:{ss:02d}")
+                            user_time = (f"You Found Wally At: {mm:02d}:{ss:02d}")
                         ai_found = 3
 
 
