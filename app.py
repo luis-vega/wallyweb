@@ -80,6 +80,14 @@ if add_radio == "Against Ai":
                 start = dt.datetime.now()
                 res = requests.post(url + "/upload_image", files={'img': img_bytes})
                 ###
+                bg_igm = st.markdown('''
+                <style>
+                body {
+                background-image: url("https://htmlcolorcodes.com/assets/images/colors/grass-green-color-solid-background-1920x1080.png");
+                background-size: cover;
+                }
+                </style>
+                ''', unsafe_allow_html=True)
             except:
                 pass
             try:
@@ -99,6 +107,7 @@ if add_radio == "Against Ai":
                     ph_myself.metric("Your Time:", f"{mm:02d}:{ss:02d}")
                     #ph_ai.metric("Ai Time:", f"{amm:02d}:{ass:02d}")
                     time.sleep(1)
+                    bg_igm.empty()
                     user_time = (f"You Found Wally at: {mm:02d}:{ss:02d}")
 
                     if sol != None :
@@ -140,11 +149,7 @@ if add_radio == "Against Ai":
                             for i, j in zip(x, y):
                                 y_pos = j * 3
                                 x_pos = i * 3
-<<<<<<< HEAD
-                                cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0), 2)
-=======
                                 cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0),2)
->>>>>>> dad23d279a6e2e791d337a683a2404013154dbf1
                             # data = cv2.cvtColor(data, cv2.COLOR_RGB2BGR)
                             st.image(data)
 
@@ -161,10 +166,6 @@ if add_radio == "Against Ai":
                 st.session_state.against_ai_user_result = user_time
                 #st.session_state.against_ai_result = (f"Ai Found Wally at: {amm:02d}:{ass:02d}")
     if bt2:
-<<<<<<< HEAD
-        ph_myself.subheader(st.session_state.against_ai_user_result)
-        ph_ai.subheader(st.session_state.against_ai_result)
-=======
         try:
             ph_myself.subheader(st.session_state.against_ai_user_result)
             ph_ai.subheader(st.session_state.against_ai_result)
@@ -173,7 +174,6 @@ if add_radio == "Against Ai":
 
         except:
             st.title("Try To Start The Game First")
->>>>>>> dad23d279a6e2e791d337a683a2404013154dbf1
 
 ### against time ###
 
@@ -247,21 +247,19 @@ elif add_radio == "Against Time":
         except:
             st.title("Try To Start The Game First")
 
-<<<<<<< HEAD
 components.html(
     """
-    <div data-role="imagemagnifier"
+<div data-role="imagemagnifier"
     data-magnifier-mode="glass"
     data-lens-type="circle"
     data-lens-size="200"
 >
 </div>
-
-
     """
 )
 
-=======
->>>>>>> dad23d279a6e2e791d337a683a2404013154dbf1
+# if st.checkbox('Magnifier'):
+#     st.write(f'<style>{CSS}</style>', unsafe_allow_html=True)
+
 ### sidebar image ###
 st.sidebar.image("./images/where-to-next-457477.png", use_column_width=True)
