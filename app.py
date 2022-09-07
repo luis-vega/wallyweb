@@ -11,14 +11,14 @@ import json
 
 st.set_page_config(
    page_title="Where Is Wally?",
-   page_icon= '🖼️',
+   page_icon= '👀',
    layout='wide'
 )
 title = st.title("Where Is Wally?")
 
-# url = 'http://localhost:8000'
+url = 'http://localhost:8000'
 # url = 'https://lightwaldo2-bwi4mwxyya-ey.a.run.app'
-url = 'https://db29-213-61-167-82.eu.ngrok.io'
+# url = 'https://db29-213-61-167-82.eu.ngrok.io'
 
 ### columns and rows ###
 col1, col2, col3= st.columns(3)
