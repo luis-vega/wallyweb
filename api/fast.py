@@ -3,8 +3,7 @@ from json import dumps
 from numpy import fromstring, uint8
 import cv2
 from keras.models import Sequential
-from keras.layers import Dropout, Lambda
-from keras.layers import Conv2D, MaxPooling2D
+from keras.layers import Dropout, Lambda,Conv2D, MaxPooling2D
 
 app = FastAPI()
 
@@ -39,5 +38,4 @@ async def receive_image(img: UploadFile=File(...)):
     nparr = fromstring(contents, uint8)
     cv2_img = cv2.imdecode(nparr, cv2.IMREAD_COLOR) # type(cv2_img) => numpy.ndarray
     heatmap = locate(cv2_img)
-    print(heatmap)
     return dumps(heatmap.tolist())

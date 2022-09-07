@@ -59,9 +59,7 @@ if add_radio == "Against Time":
     else:
         timer = 2.0
 
-
 ### against ai ###
-
 if add_radio == "Against Ai":
     bt1 = st.sidebar.button("Press To Start/Reset", key="a")
     ph_myself = col1.empty()
@@ -166,14 +164,24 @@ if add_radio == "Against Ai":
                 st.session_state.against_ai_user_result = user_time
                 #st.session_state.against_ai_result = (f"Ai Found Wally at: {amm:02d}:{ass:02d}")
     if bt2:
-        try:
+        # try:
             ph_myself.subheader(st.session_state.against_ai_user_result)
             ph_ai.subheader(st.session_state.against_ai_result)
             st.session_state.orginal_image.empty()
-            st.image(st.session_state.sol)
+            heatmap = np.asarray(json.loads(st.session_state.sol))
+            data=np.array(image)
+            # data = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2RGB)
+            xx, yy = np.meshgrid(np.arange(heatmap.shape[2]), np.arange(heatmap.shape[1]))
+            x = (xx[heatmap[0, :, :, 0] > 0.999])
+            y = (yy[heatmap[0, :, :, 0] > 0.999])
+            for i, j in zip(x, y):
+                y_pos = j * 3
+                x_pos = i * 3
+                cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0),2)
+            st.image(data)
 
-        except:
-            st.title("Try To Start The Game First")
+        # except:
+        #     st.title("Try To Start The Game First")
 
 ### against time ###
 
