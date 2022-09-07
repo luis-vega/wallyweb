@@ -72,7 +72,7 @@ if add_radio == "Against Ai":
         else:
             try:
                 ### Using api to reach model ###
-                title.title("Ai Is Working On It")
+                title.title("AI Is Working On It")
                 start = dt.datetime.now()
                 res = requests.post(url + "/upload_image", files={'img': img_bytes})
                 html_string = """
@@ -104,8 +104,7 @@ if add_radio == "Against Ai":
                     #    amm, ass = secs//60, secs%60
                     ph_myself.metric("Your Time:", f"{mm:02d}:{ss:02d}")
                     #ph_ai.metric("Ai Time:", f"{amm:02d}:{ass:02d}")
-                    time.sleep(1)
-                    user_time = (f"You Found Wally at: {mm:02d}:{ss:02d}")
+                    user_time = (f"You Found Wally At: {mm:02d}:{ss:02d}")
 
                     if sol != None :
                         ai_found = True
@@ -115,7 +114,13 @@ if add_radio == "Against Ai":
                         time_sp = str(dt.datetime.now() - start).replace("0:", "" , 1).replace(".", ":")
                         while len(time_sp) > 5:
                             time_sp = time_sp[0 : 5 : ] + time_sp[5 + 1 : :]
-                        st.session_state.against_ai_result = (f"Ai Found Wally in: {time_sp}")
+                        time_sp1 = ""
+                        for q in time_sp:
+                            if time_sp.index(q)==5:
+                                q = str(int(q) - 2)
+                            time_sp1 += q
+
+                        st.session_state.against_ai_result = (f"AI Found Wally In: {time_sp1}")
                         ph_ai.empty()
                         ph_ai.subheader(st.session_state.against_ai_result)
                         # with col1.expander("Need Some Help?"):
@@ -159,8 +164,10 @@ if add_radio == "Against Ai":
                             mm, ss = secs//60, secs%60
                             ph_myself.metric("Your Time:", f"{mm:02d}:{ss:02d}")
                             time.sleep(1)
-                            user_time = (f"You Found Wally at: {mm:02d}:{ss:02d}")
+                            user_time = (f"You Found Wally At: {mm:02d}:{ss:02d}")
                         ai_found = 3
+                    time.sleep(1)
+
 
 
             finally:
