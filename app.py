@@ -56,8 +56,14 @@ if add_radio == "Against Time":
         timer = 2.0
 
 
+<<<<<<< HEAD
 ### against ai ###
 
+=======
+
+### against ai ###    
+   
+>>>>>>> 0470ba372fb495bb9834c60572f614c929d90bbb
 if add_radio == "Against Ai":
     bt1 = st.sidebar.button("Press To Start/Reset", key="a")
     ph_myself = col1.empty()
