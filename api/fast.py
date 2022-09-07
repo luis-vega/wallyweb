@@ -29,11 +29,6 @@ def locate(img):
     heatmap = heatmodel.predict(data.reshape(1, data.shape[0], data.shape[1], data.shape[2]))
     return heatmap
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> a262dfad1a9a099ed5cff65a603890ab75bedc8d
 @app.get("/")
 def index():
     return {"status": "ok"}
