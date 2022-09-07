@@ -17,7 +17,7 @@ title = st.title("Where Is Wally?")
 
 # url = 'http://localhost:8000'
 # url = 'https://lightwaldo2-bwi4mwxyya-ey.a.run.app'
-url = 'https://1d81-213-61-167-82.eu.ngrok.io/'
+url = 'https://1d81-213-61-167-82.eu.ngrok.io'
 
 ### columns and rows ###
 col1, col2, col3= st.columns(3)
