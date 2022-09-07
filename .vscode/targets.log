@@ -7,7 +7,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
 
-# Make data base, printed on Tue Sep  6 15:14:30 2022
+# Make data base, printed on Wed Sep  7 09:46:01 2022
 
 # Variables
 
@@ -24,7 +24,7 @@ VSCODE_LOG_NATIVE = false
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-DIRENV_WATCHES = eJyUj8FKxDAQQP8l57KTSZuY9O5R8OJJPExmZmkhu4GkbhXx38VrFcH74_He84d5pG0xs4Gnrq1Dp8vaSKhVXgi4isJOpbzvmuGk11tjM5iHKtt6UTNjCG6a0jTFwdy_rX3rZt7aq34Of3tPpTIV6As1BVmbXm9ApdQdEmH2FjFTJJvPSVnEjYzoheKILga2FDMGvUvoQxLR8zeSnfrAzh_rEG2I9n91P69_e3bjwfryFQAA__-ZAWxR
+DIRENV_WATCHES = eJyUj8FqAyEQQP_F85JxjBrde4-FXnoqPYzOhF0wEdRmW0r_vfSahULuj8d7b9_qhcaiZgWvXVqHTpe1EVOreSHIlQU2KuVrkwQHud5aVpN6rjzWi6gZvTfWRmvDpJ4-1z66mkf7kJ_pf--h1EwF-kJNgNcm1xtQKXWDSJicRkwUSKdzlMxsjhnRMYUjmuCzppDQyymi85FZzn9IMuJ8Nu6-DlH7oB-r21_vnk_aoL2zvv8GAAD__5hlbEk=
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # automatic
@@ -48,9 +48,9 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-DIRENV_DIFF = eJyEkVtvqkwYRv_LXKtoRYvczaecUZBTrTeTEUYOBYYOw0Gb_vcvmp10Zyc7-3pl5Xmz3i_QAPnrewJqIH8B6Boo9Gwgg4zzRhaEksa4zGjLZWk-nwtdU1KcoLzCKRHABOwMTzlEaGd4QAZTIWwJa4UWVznDCWY0zrAQ04QIAy7L20AuP4pq2AqQwb8VYUbqnsU_5hsMtrriAxkQ8xYWkmqNO3g8ulK5erUC_9y9b5yVJzmm6Spjda4-sk7UPi7ZaVxKEVNj_VVEOpHEZNVo87EVtZp9LnaN1GPfyqJTmot5azrN5d5XnfaxWPBiv8p1i_N1GByKrbbG8yJQh-SG2GnJzvwVfy5F57rkbhMY0Rq2i_-i6nKqNrBJjolS6S9qoQam2bt-VCvF-51mxDLsFL-ou73Whz09jrYn3YlfXxm8Z4gp2ouxqTcLd71BZHkphiu7qUcIEZqe4dvoPVo4W0vxkLGHmoIOcP9oec3rZMBlQsEEaFsXuZ5jKtsAGTsgg5JMB5zSerpZiU_uoX1oBwbyFM1wDo-a3SyN2Synv_BvgNGGTAfS8iWYgOfmH3O2s4X20_AD7x25MND_9txZSZ6HCFVJm1bgDOd1XqeIdrzpeAu-v_8PAAD__31g15k=
+DIRENV_DIFF = eJyEkV1vokAYRv_LXItot1pKshdUBgURdQRpezOZwsjXwIzDV6Xxv280m3SzyWavT06eN-f9AgLoX9cRqID-BYydjQPkAh2kTSN0VWU8IizldaNrk8lEbQXjJMZZSRKqghEwbQS9IzZtBHSgqEFNZa3WpMwkiYnkUUrUiMdU7Qljl55-fCuW7UKgg_8r6phWnYy-zdDwFyt4ADqgziXINetsXOB-v8OWNnM-8xcZ00fFeq34efc2bFNr0sMYleFE4u50IGngtrkWP30843Makew9CbvX43nlCzqFx62kh5XN9sHDuj3Kot-v2nhGjsKby3wIs3ny3vmnEJWdKZxHZTrM52VxeiocLE6Kkk5hbymF4yVeVE4_m_36NTQPThahog8O63hgm886Tyu0eQvysl0MQpj7y6XMtJn1PlTP9qZ1NK-dKyZbPfEXRT5McVcVmHD3Yeg6bWkYJsazlH3A4uetx3axhgjbG2MJsWdsbj1ZlqRNT1jMwQgsFzu8Q1sHLnxsmzdKlZ4kvFKeZ493jvAmcH0bI7i0t94taTtOIjnO-G_8B5BcUKWndfMDjMB99O89d7sw3Lty8NEb3hn-6l8vHjN6v0QtGRe12kiSVVmVYN42om1qcL3-CgAA__-aR9xe
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/gw/sp3m3dw161d8s1szmbg9y1wh0000gn/T/vscode-ipc-ea6f7ba6-088f-4ad5-8275-3109883dcd5e.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/gw/sp3m3dw161d8s1szmbg9y1wh0000gn/T/vscode-ipc-7ec32a2c-f8d9-4f2d-aaa6-f5bfa14922df.sock
 # environment
 VSCODE_CWD = /Users/samiradarocha/code/wallyweb
 # environment
@@ -60,7 +60,7 @@ LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
 VIRTUAL_ENV = /Users/samiradarocha/.pyenv/versions/3.8.12/envs/whereswally
 # environment
-LaunchInstanceID = 9F4021A7-FE14-4D4F-A98C-1A74376686EC
+LaunchInstanceID = 84E842B6-7400-427B-B5DA-CC9339F6BCE9
 # environment
 LOCAL_REGISTRY_PATH = /Users/samiradarocha/.lewagon/mlops/training_outputs
 # environment
@@ -72,7 +72,7 @@ PYENV_ROOT = /Users/samiradarocha/.pyenv
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.lZwzCwk8El/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.uJMnFPYfA2/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -110,7 +110,7 @@ XPC_FLAGS = 0x0
 # environment
 COLORTERM = truecolor
 # environment
-IMAGE = findwaldo
+IMAGE = lightwaldo
 # environment
 LC_TERMINAL = iTerm2
 # environment
@@ -126,7 +126,7 @@ USER = samiradarocha
 # default
 MAKECMDGOALS := all
 # environment
-TERM_SESSION_ID = w0t1p0:944BBD7C-C317-43ED-9F78-766AF956121F
+TERM_SESSION_ID = w0t3p0:3B60F059-E742-492B-8D9C-2A92C46B3C2D
 # environment
 GCP_PROJECT_ID = le-wagon-954
 # environment
@@ -160,7 +160,7 @@ TERM_PROGRAM_VERSION = 3.4.16
 # environment
 NVM_DIR = /Users/samiradarocha/.nvm
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.10049425.10049431.12A2288C-E60F-4933-8982-A61AAED3B695
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.10049425.10049431.E2378FBA-360B-47B9-B9D1-AF16C2D94A1C
 # environment
 LC_TERMINAL_VERSION = 3.4.16
 # automatic
@@ -168,7 +168,7 @@ LC_TERMINAL_VERSION = 3.4.16
 # automatic
 +F = $(notdir $+)
 # environment
-ITERM_SESSION_ID = w0t1p0:944BBD7C-C317-43ED-9F78-766AF956121F
+ITERM_SESSION_ID = w0t3p0:3B60F059-E742-492B-8D9C-2A92C46B3C2D
 # environment
 COLORFGBG = 7;0
 # environment
@@ -186,7 +186,7 @@ EDITOR = code
 # environment
 PAGER = less
 # environment
-DOCKER_IMAGE_NAME = findwaldo
+DOCKER_IMAGE_NAME = lightwaldo
 # environment
 LC_ALL = C
 # environment
@@ -194,7 +194,7 @@ PYENV_VIRTUALENV_DISABLE_PROMPT = 1
 # environment
 PYENV_VIRTUAL_ENV = /Users/samiradarocha/.pyenv/versions/3.8.12/envs/whereswally
 # environment
-SECURITYSESSIONID = 186a5
+SECURITYSESSIONID = 186a3
 # automatic
 ^F = $(notdir $^)
 # default
@@ -212,7 +212,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 18391
+VSCODE_PID = 9824
 # variable set hash-table stats:
 # Load=101/1024=10%, Rehash=0, Collisions=7/125=6%
 
@@ -222,7 +222,7 @@ VSCODE_PID = 18391
 
 # Directories
 
-# . (device 16777222, inode 19697510): 24 files, no impossibilities.
+# . (device 16777221, inode 19697510): 24 files, no impossibilities.
 
 # 24 files, no impossibilities in 1 directories.
 
@@ -362,6 +362,6 @@ install:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Tue Sep  6 15:14:30 2022
+# Finished Make data base on Wed Sep  7 09:46:01 2022
 
  

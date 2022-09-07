@@ -8,6 +8,10 @@ import streamlit as st
 from PIL import Image, ImageDraw
 import json
 
+import streamlit.components.v1 as components
+
+
+
 st.set_page_config(
    page_title="Where Is Wally?",
    page_icon= '🖼️'
@@ -222,22 +226,18 @@ elif add_radio == "Against Time":
         except:
             st.title("Try To Start The Game First")
 
+components.html(
+    """
+    <div data-role="imagemagnifier"
+    data-magnifier-mode="glass"
+    data-lens-type="circle"
+    data-lens-size="200"
+>
+</div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    """
+)
 
 ### sidebar image ###
 st.sidebar.image("./images/where-to-next-457477.png", use_column_width=True)
