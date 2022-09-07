@@ -12,7 +12,8 @@ from PIL import Image, ImageDraw
 
 st.set_page_config(
    page_title="Where Is Wally?",
-   page_icon= '🖼️'
+   page_icon= '🖼️',
+   layout = "wide"
 )
 title = st.title("Where Is Wally?")
 
@@ -42,7 +43,7 @@ else:
 ### challenge selection###
 add_radio = st.sidebar.radio(
     "What Would You Like To Play?",
-    ("Against Ai" ,  "Against Time"))
+    ("Against AI" ,  "Against Time"))
         
 if add_radio == "Against Time":
     timer_selection = st.sidebar.radio(
@@ -59,7 +60,7 @@ if add_radio == "Against Time":
 
 ### against ai ###    
    
-if add_radio == "Against Ai":
+if add_radio == "Against AI":
     bt1 = st.sidebar.button("Press To Start/Reset", key="a")
     ph_myself = col1.empty()
     ph_ai = col3.empty()
@@ -73,9 +74,19 @@ if add_radio == "Against Ai":
         else:
             try:
                 ### Using api to reach model ###
-                title.title("Ai Is Working On It")
+                title.title("AI Is Working On It")
                 start = dt.datetime.now()
                 res = requests.post(url + "/upload_image", files={'img': img_bytes})
+                html_string = """
+                            <audio controls autoplay>
+                            <source src="https://www.orangefreesounds.com/wp-content/uploads/2022/04/Small-bell-ringing-short-sound-effect.mp3" type="audio/mp3">
+                            </audio>
+                            """
+
+                sound = st.empty()
+                sound.markdown(html_string, unsafe_allow_html=True)  # will display a st.audio with the sound you specified in the "src" of the html_string and autoplay it
+                time.sleep(2)  # wait for 2 seconds to finish the playing of the audio
+                sound.empty()  # optionally delete the element afterwards
                 ###
             except:
                 pass
@@ -84,7 +95,7 @@ if add_radio == "Against Ai":
                     #start = dt.datetime.now()
                     #title.title("Ai Is Working On It")
                     if res.status_code == 200:
-                        ### Response from module ###
+                        ### Response from module ### 
                         sol = res.content
                         st.session_state.sol = sol
                         #sol = [(1050,1),(1250,200)]
@@ -106,7 +117,9 @@ if add_radio == "Against Ai":
                     
                     if ai_found == True:
                         time_sp = str(dt.datetime.now() - start).replace("0:", "" , 1).replace(".", ":")
-                        st.session_state.against_ai_result = (f"Ai Found Wally in: {time_sp}")
+                        while len(time_sp) > 5:
+                            time_sp = time_sp[0 : 5 : ] + time_sp[5 + 1 : :]
+                        st.session_state.against_ai_result = (f"AI Found Wally in: {time_sp}")
                         ph_ai.empty()
                         ph_ai.subheader(st.session_state.against_ai_result)
                         # with col1.expander("Need Some Help?"):
@@ -130,7 +143,7 @@ if add_radio == "Against Ai":
                         #     st.write(f"Maybe Try To Look Closely To The {y} {x}.")
 
                         with col3.expander("I Give Up!"):
-                            st.image(res.content)
+                            st.image(res.content,use_column_width= "always")
                             # draw = ImageDraw.Draw(st.session_state.orginal_image)
                             # draw.ellipse(xy= sol, fill = None , outline ='black', width= 10)
                             # st.session_state.orginal_image.save("drawn_result.png")
