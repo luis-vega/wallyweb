@@ -119,6 +119,9 @@ if add_radio == "Against AI":
                         time_sp = str(dt.datetime.now() - start).replace("0:", "" , 1).replace(".", ":")
                         while len(time_sp) > 5:
                             time_sp = time_sp[0 : 5 : ] + time_sp[5 + 1 : :]
+                        for q in time_sp:
+                            if time_sp.index(q)==5:
+                                q = q-2
                         st.session_state.against_ai_result = (f"AI Found Wally in: {time_sp}")
                         ph_ai.empty()
                         ph_ai.subheader(st.session_state.against_ai_result)
