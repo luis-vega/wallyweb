@@ -15,8 +15,9 @@ st.set_page_config(
 )
 title = st.title("Where Is Wally?")
 
-url = 'http://localhost:8000'
+# url = 'http://localhost:8000'
 # url = 'https://lightwaldo2-bwi4mwxyya-ey.a.run.app'
+url = 'https://1d81-213-61-167-82.eu.ngrok.io/'
 
 ### columns and rows ###
 col1, col2, col3= st.columns(3)
@@ -129,8 +130,8 @@ if add_radio == "Against Ai":
                             data=np.array(image)
                             # data = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2RGB)
                             xx, yy = np.meshgrid(np.arange(heatmap.shape[2]), np.arange(heatmap.shape[1]))
-                            x = (xx[heatmap[0, :, :, 0] > 0.999])
-                            y = (yy[heatmap[0, :, :, 0] > 0.999])
+                            x = (xx[heatmap[0, :, :, 0] > 0.99])
+                            y = (yy[heatmap[0, :, :, 0] > 0.99])
                             for i, j in zip(x, y):
                                 y_pos = j * 3
                                 x_pos = i * 3
@@ -159,8 +160,8 @@ if add_radio == "Against Ai":
             data=np.array(image)
             # data = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2RGB)
             xx, yy = np.meshgrid(np.arange(heatmap.shape[2]), np.arange(heatmap.shape[1]))
-            x = (xx[heatmap[0, :, :, 0] > 0.999])
-            y = (yy[heatmap[0, :, :, 0] > 0.999])
+            x = (xx[heatmap[0, :, :, 0] > 0.99])
+            y = (yy[heatmap[0, :, :, 0] > 0.99])
             for i, j in zip(x, y):
                 y_pos = j * 3
                 x_pos = i * 3
@@ -209,8 +210,8 @@ elif add_radio == "Against Time":
                                 data=np.array(image)
                                 # data = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2RGB)
                                 xx, yy = np.meshgrid(np.arange(heatmap.shape[2]), np.arange(heatmap.shape[1]))
-                                x = (xx[heatmap[0, :, :, 0] > 0.999])
-                                y = (yy[heatmap[0, :, :, 0] > 0.999])
+                                x = (xx[heatmap[0, :, :, 0] > 0.99])
+                                y = (yy[heatmap[0, :, :, 0] > 0.99])
                                 for i, j in zip(x, y):
                                     y_pos = j * 3
                                     x_pos = i * 3
