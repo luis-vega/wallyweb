@@ -108,7 +108,6 @@ if add_radio == "Against AI":
                     #    amm, ass = secs//60, secs%60
                     ph_myself.metric("Your Time:", f"{mm:02d}:{ss:02d}")
                     #ph_ai.metric("Ai Time:", f"{amm:02d}:{ass:02d}")
-                    time.sleep(1)
                     user_time = (f"You Found Wally At: {mm:02d}:{ss:02d}")
                     
                     if sol != None :
@@ -119,10 +118,13 @@ if add_radio == "Against AI":
                         time_sp = str(dt.datetime.now() - start).replace("0:", "" , 1).replace(".", ":")
                         while len(time_sp) > 5:
                             time_sp = time_sp[0 : 5 : ] + time_sp[5 + 1 : :]
+                        time_sp1 = ""
                         for q in time_sp:
                             if time_sp.index(q)==5:
-                                q = q-2
-                        st.session_state.against_ai_result = (f"AI Found Wally In: {time_sp}")
+                                q = str(int(q) - 2)
+                            time_sp1 += q
+                                
+                        st.session_state.against_ai_result = (f"AI Found Wally In: {time_sp1}")
                         ph_ai.empty()
                         ph_ai.subheader(st.session_state.against_ai_result)
                         # with col1.expander("Need Some Help?"):
@@ -158,6 +160,8 @@ if add_radio == "Against AI":
                             time.sleep(1)
                             user_time = (f"You Found Wally At: {mm:02d}:{ss:02d}")
                         ai_found = 3
+                    time.sleep(1)
+
 
 
             finally:
