@@ -10,14 +10,8 @@ import json
 im = Image.open("waldo_icon.png")
 st.set_page_config(
    page_title="Where Is Wally?",
-<<<<<<< HEAD
-   page_icon= '🖼️',
-   layout="wide"
-=======
-#    page_icon= '👀',
     page_icon = im,
    layout='wide'
->>>>>>> 85c687fedbdf076ee0c597d4e4dc0b360a61dad0
 )
 
 title = st.title("Where Is Wally?")
@@ -129,13 +123,7 @@ if add_radio == "Against Ai":
                     #    amm, ass = secs//60, secs%60
                     ph_myself.metric("Your Time:", f"{mm:02d}:{ss:02d}")
                     #ph_ai.metric("Ai Time:", f"{amm:02d}:{ass:02d}")
-<<<<<<< HEAD
-                    time.sleep(1)
-                    bg_igm.empty()
-                    user_time = (f"You Found Wally at: {mm:02d}:{ss:02d}")
-=======
                     user_time = (f"You Found Wally At: {mm:02d}:{ss:02d}")
->>>>>>> 85c687fedbdf076ee0c597d4e4dc0b360a61dad0
 
                     if sol != None :
                         ai_found = True
@@ -145,9 +133,6 @@ if add_radio == "Against Ai":
                         time_sp = str(dt.datetime.now() - start).replace("0:", "" , 1).replace(".", ":")
                         while len(time_sp) > 5:
                             time_sp = time_sp[0 : 5 : ] + time_sp[5 + 1 : :]
-<<<<<<< HEAD
-                        st.session_state.against_ai_result = (f"Ai Found Wally in: {time_sp}")
-=======
                         time_sp1 = ""
                         for q in time_sp:
                             if time_sp.index(q)==5:
@@ -155,7 +140,6 @@ if add_radio == "Against Ai":
                             time_sp1 += q
 
                         st.session_state.against_ai_result = (f"AI Found Wally In: {time_sp1}")
->>>>>>> 85c687fedbdf076ee0c597d4e4dc0b360a61dad0
                         ph_ai.empty()
                         ph_ai.subheader(st.session_state.against_ai_result)
 
@@ -170,12 +154,8 @@ if add_radio == "Against Ai":
                             for i, j in zip(x, y):
                                 y_pos = j * 3
                                 x_pos = i * 3
-<<<<<<< HEAD
-                                cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0),2)
-=======
-                                cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0),1)
+                                cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0), 2)
                             # data = cv2.cvtColor(data, cv2.COLOR_RGB2BGR)
->>>>>>> 85c687fedbdf076ee0c597d4e4dc0b360a61dad0
                             st.image(data)
 
 
@@ -190,26 +170,7 @@ if add_radio == "Against Ai":
 
             finally:
                 st.session_state.against_ai_user_result = user_time
-<<<<<<< HEAD
-=======
                 #st.session_state.against_ai_result = (f"Ai Found Wally at: {amm:02d}:{ass:02d}")
-    if bt2:
-        # try:
-            ph_myself.subheader(st.session_state.against_ai_user_result)
-            ph_ai.subheader(st.session_state.against_ai_result)
-            st.session_state.orginal_image.empty()
-            heatmap = np.asarray(json.loads(st.session_state.sol))
-            data=np.array(image)
-            # data = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2RGB)
-            xx, yy = np.meshgrid(np.arange(heatmap.shape[2]), np.arange(heatmap.shape[1]))
-            x = (xx[heatmap[0, :, :, 0] > 0.99])
-            y = (yy[heatmap[0, :, :, 0] > 0.99])
-            for i, j in zip(x, y):
-                y_pos = j * 3
-                x_pos = i * 3
-                cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0),1)
-            st.image(data)
->>>>>>> 85c687fedbdf076ee0c597d4e4dc0b360a61dad0
 
     if bt2:
         ph_myself.subheader(st.session_state.against_ai_user_result)
@@ -258,10 +219,7 @@ elif add_radio == "Against Time":
                         st.title("Time Is Up!")
                         if res.status_code == 200:
                             sol = res.json()
-<<<<<<< HEAD
-=======
                             #sol = [(1050,0),(1250,200)]
->>>>>>> 85c687fedbdf076ee0c597d4e4dc0b360a61dad0
                             with col3.expander("Where is he?"):
                                 # heatmap = np.asarray(json.loads(sol))
                                 heatmap = np.asarray(json.loads(sol))
@@ -272,12 +230,8 @@ elif add_radio == "Against Time":
                                 for i, j in zip(x, y):
                                     y_pos = j * 3
                                     x_pos = i * 3
-<<<<<<< HEAD
-                                    cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0),2)
-=======
-                                    cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0),1)
+                                    cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0), 2)
                                     # data = cv2.cvtColor(data, cv2.COLOR_RGB2BGR)
->>>>>>> 85c687fedbdf076ee0c597d4e4dc0b360a61dad0
                                 st.image(data)
 
                         else:
