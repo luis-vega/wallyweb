@@ -18,8 +18,8 @@ st.set_page_config(
 )
 title = st.title("Where Is Wally?")
 
-# url = 'http://localhost:8000'
-url = 'https://finalwaldo-bwi4mwxyya-ey.a.run.app'
+url = 'http://localhost:8000'
+# url = 'https://finalwaldo-bwi4mwxyya-ey.a.run.app'
 # url = 'https://6ab9-213-61-167-82.eu.ngrok.io'
 
 ### columns and rows ###
@@ -87,11 +87,21 @@ if add_radio == "Against Ai":
                 sound.markdown(html_string, unsafe_allow_html=True)  # will display a st.audio with the sound you specified in the "src" of the html_string and autoplay it
                 time.sleep(2)  # wait for 2 seconds to finish the playing of the audio
                 sound.empty()  # optionally delete the element afterwards
+                time_sp = str(dt.datetime.now() - start).replace("0:", "" , 1).replace(".", ":")
+                while len(time_sp) > 5:
+                    time_sp = time_sp[0 : 5 : ] + time_sp[5 + 1 : :]
+                time_sp1 = ""
+                for q in time_sp:
+                    if time_sp.index(q)==5:
+                        q = str(int(q) - 2)
+                    time_sp1 += q
+                ai_found = True
+                start_time = int(time_sp1.replace(":",""))
                 ###
             except:
                 pass
             try:
-                for secs in range(0,999*60,+1):
+                for secs in range(start_time,999*60,+1):
                     #start = dt.datetime.now()
                     #title.title("Ai Is Working On It")
                     if res.status_code == 200:
@@ -108,20 +118,10 @@ if add_radio == "Against Ai":
                     #ph_ai.metric("Ai Time:", f"{amm:02d}:{ass:02d}")
                     user_time = (f"You Found Wally At: {mm:02d}:{ss:02d}")
 
-                    if sol != None :
-                        ai_found = True
-                        title.title("Where Is Wally?")
+
+                    title.title("Where Is Wally?")
 
                     if ai_found == True:
-                        time_sp = str(dt.datetime.now() - start).replace("0:", "" , 1).replace(".", ":")
-                        while len(time_sp) > 5:
-                            time_sp = time_sp[0 : 5 : ] + time_sp[5 + 1 : :]
-                        time_sp1 = ""
-                        for q in time_sp:
-                            if time_sp.index(q)==5:
-                                q = str(int(q) - 2)
-                            time_sp1 += q
-
                         st.session_state.against_ai_result = (f"AI Found Wally In: {time_sp1}")
                         ph_ai.empty()
                         ph_ai.subheader(st.session_state.against_ai_result)
