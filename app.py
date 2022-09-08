@@ -155,7 +155,7 @@ if add_radio == "Against Ai":
                             for i, j in zip(x, y):
                                 y_pos = j * 3
                                 x_pos = i * 3
-                                cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0),3)
+                                cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0),2)
                             # data = cv2.cvtColor(data, cv2.COLOR_RGB2BGR)
                             st.image(data)
 
@@ -187,7 +187,7 @@ if add_radio == "Against Ai":
             for i, j in zip(x, y):
                 y_pos = j * 3
                 x_pos = i * 3
-                cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0),1)
+                cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0),2)
             st.image(data)
 
         # except:
@@ -238,7 +238,7 @@ elif add_radio == "Against Time":
                                 for i, j in zip(x, y):
                                     y_pos = j * 3
                                     x_pos = i * 3
-                                    cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0),1)
+                                    cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0),2)
                                     # data = cv2.cvtColor(data, cv2.COLOR_RGB2BGR)
                                 st.image(data)
                                 # draw = ImageDraw.Draw(st.session_state.orginal_image)
