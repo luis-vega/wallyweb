@@ -109,8 +109,6 @@ if add_radio == "Against Ai":
                 pass
             try:
                 for secs in range(0,999*60,+1):
-                    #start = dt.datetime.now()
-                    #title.title("Ai Is Working On It")
                     if res.status_code == 200:
                         sol = res.json()
                         st.session_state.sol = sol
@@ -119,10 +117,9 @@ if add_radio == "Against Ai":
                         print(res.status_code, res.content)
 
                     mm, ss = secs//60, secs%60
-                    #if ai_found == False:
-                    #    amm, ass = secs//60, secs%60
+
                     ph_myself.metric("Your Time:", f"{mm:02d}:{ss:02d}")
-                    #ph_ai.metric("Ai Time:", f"{amm:02d}:{ass:02d}")
+
                     user_time = (f"You Found Wally At: {mm:02d}:{ss:02d}")
 
                     if sol != None :
@@ -152,14 +149,8 @@ if add_radio == "Against Ai":
                             for i, j in zip(x, y):
                                 y_pos = j * 3
                                 x_pos = i * 3
-<<<<<<< HEAD
                                 cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0), 2)
-=======
-                                cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0),3)
->>>>>>> f7624ff3642596000fae7196caac6a72da320619
-                            # data = cv2.cvtColor(data, cv2.COLOR_RGB2BGR)
                             st.image(data)
-
 
                         for secs in range(mm*60+ss,999*60,+1):
                             mm, ss = secs//60, secs%60
@@ -168,11 +159,8 @@ if add_radio == "Against Ai":
                             user_time = (f"You Found Wally At: {mm:02d}:{ss:02d}")
                         ai_found = 3
                     time.sleep(1)
-
-
             finally:
                 st.session_state.against_ai_user_result = user_time
-                #st.session_state.against_ai_result = (f"Ai Found Wally at: {amm:02d}:{ass:02d}")
 
     if bt2:
         ph_myself.subheader(st.session_state.against_ai_user_result)
@@ -211,7 +199,6 @@ elif add_radio == "Against Time":
                     sonuc = N - end
                     if sonuc%60 < 10:
                         sonsonuc = (f"You spent {sonuc//60}:0{sonuc%60}")
-
                     else:
                         sonsonuc = (f"You spent {sonuc//60}:{sonuc%60}")
                     ph_myself_conc.text(sonsonuc)
@@ -235,14 +222,13 @@ elif add_radio == "Against Time":
                                     cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0), 2)
                                     # data = cv2.cvtColor(data, cv2.COLOR_RGB2BGR)
                                 st.image(data)
-
                         else:
                             st.markdown("**Oops**, something went wrong 😓 Please try again.")
                             print(res.status_code, res.content)
-
             finally:
                 st.session_state.against_time_result = sonsonuc
                 st.session_state.against_time_spent = sonuc
+
     if bt2:
         try:
             if st.session_state.against_time_result != None:
