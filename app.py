@@ -9,9 +9,11 @@ import streamlit as st
 from PIL import Image, ImageDraw
 import json
 
+im = Image.open("waldo_icon.png")
 st.set_page_config(
    page_title="Where Is Wally?",
-   page_icon= '👀',
+#    page_icon= '👀',
+    page_icon = im,
    layout='wide'
 )
 title = st.title("Where Is Wally?")
