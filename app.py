@@ -14,7 +14,7 @@ st.set_page_config(
    page_title="Where Is Wally?",
 #    page_icon= '👀',
     page_icon = im,
-   layout='wide'
+    layout='wide'
 )
 title = st.title("Where Is Wally?")
 
@@ -152,12 +152,10 @@ if add_radio == "Against Ai":
                             xx, yy = np.meshgrid(np.arange(heatmap.shape[2]), np.arange(heatmap.shape[1]))
                             x = (xx[heatmap[0, :, :, 0] > 0.99])
                             y = (yy[heatmap[0, :, :, 0] > 0.99])
-                            # x = x[:20]
-                            print(x,y)
                             for i, j in zip(x, y):
                                 y_pos = j * 3
                                 x_pos = i * 3
-                                cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0),1)
+                                cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0),3)
                             # data = cv2.cvtColor(data, cv2.COLOR_RGB2BGR)
                             st.image(data)
 
