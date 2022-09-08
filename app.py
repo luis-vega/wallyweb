@@ -11,14 +11,14 @@ im = Image.open("waldo_icon.png")
 st.set_page_config(
    page_title="Where Is Wally?",
     page_icon = im,
-   layout='wide'
+    layout='wide'
 )
 
 title = st.title("Where Is Wally?")
 
-url = 'http://localhost:8000'
+# url = 'http://localhost:8000'
 # url = 'https://lightwaldo2-bwi4mwxyya-ey.a.run.app'
-# url = 'https://db29-213-61-167-82.eu.ngrok.io'
+url = 'https://6ab9-213-61-167-82.eu.ngrok.io'
 
 ### columns and rows ###
 col1, col2, col3= st.columns(3)
@@ -149,12 +149,14 @@ if add_radio == "Against Ai":
                             xx, yy = np.meshgrid(np.arange(heatmap.shape[2]), np.arange(heatmap.shape[1]))
                             x = (xx[heatmap[0, :, :, 0] > 0.99])
                             y = (yy[heatmap[0, :, :, 0] > 0.99])
-                            # x = x[:20]
-                            print(x,y)
                             for i, j in zip(x, y):
                                 y_pos = j * 3
                                 x_pos = i * 3
+<<<<<<< HEAD
                                 cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0), 2)
+=======
+                                cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0),3)
+>>>>>>> f7624ff3642596000fae7196caac6a72da320619
                             # data = cv2.cvtColor(data, cv2.COLOR_RGB2BGR)
                             st.image(data)
 
