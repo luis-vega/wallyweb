@@ -18,8 +18,8 @@ st.set_page_config(
 )
 title = st.title("Where Is Wally?")
 
-# url = 'http://localhost:8000'
-url = 'https://finalwaldo-bwi4mwxyya-ey.a.run.app'
+url = 'http://localhost:8000'
+# url = 'https://finalwaldo-bwi4mwxyya-ey.a.run.app'
 # url = 'https://6ab9-213-61-167-82.eu.ngrok.io'
 
 ### columns and rows ###
