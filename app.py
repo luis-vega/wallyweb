@@ -1,21 +1,19 @@
-import os
 import cv2
 import time
 import requests
 import datetime as dt
 import numpy as np
-# from turtle import onclick
 import streamlit as st
-from PIL import Image, ImageDraw
+from PIL import Image
 import json
 
 im = Image.open("waldo_icon.png")
 st.set_page_config(
    page_title="Where Is Wally?",
-#    page_icon= '👀',
     page_icon = im,
     layout='wide'
 )
+
 title = st.title("Where Is Wally?")
 
 url = 'http://localhost:8000'
@@ -31,7 +29,6 @@ if "button_clicked" not in st.session_state:
 
 def callback():
     st.session_state.button_clicked = True
-
 
 ### image selection ###
 uploaded_file = st.sidebar.file_uploader("Upload Your Wally Image", accept_multiple_files=False, type=["png", "jpg", "jpeg"])
@@ -98,6 +95,26 @@ if add_radio == "Against Ai":
                 ai_found = True
                 start_time = int(time_sp1.replace(":",""))
                 ###
+
+                html_string = """
+                            <audio controls autoplay>
+                            <source src="https://www.orangefreesounds.com/wp-content/uploads/2022/04/Small-bell-ringing-short-sound-effect.mp3" type="audio/mp3">
+                            </audio>
+                            """
+
+                sound = st.empty()
+                sound.markdown(html_string, unsafe_allow_html=True)  # will display a st.audio with the sound you specified in the "src" of the html_string and autoplay it
+                time.sleep(2)  # wait for 2 seconds to finish the playing of the audio
+                sound.empty()  # optionally delete the element afterwards
+
+                bg_igm = st.markdown('''
+                <style>
+                body {
+                background-image: url("https://htmlcolorcodes.com/assets/images/colors/grass-green-color-solid-background-1920x1080.png");
+                background-size: cover;
+                }
+                </style>
+                ''', unsafe_allow_html=True)
             except:
                 pass
             try:
@@ -112,10 +129,9 @@ if add_radio == "Against Ai":
                         print(res.status_code, res.content)
 
                     mm, ss = secs//60, secs%60
-                    #if ai_found == False:
-                    #    amm, ass = secs//60, secs%60
+
                     ph_myself.metric("Your Time:", f"{mm:02d}:{ss:02d}")
-                    #ph_ai.metric("Ai Time:", f"{amm:02d}:{ass:02d}")
+
                     user_time = (f"You Found Wally At: {mm:02d}:{ss:02d}")
 
 
@@ -125,40 +141,18 @@ if add_radio == "Against Ai":
                         st.session_state.against_ai_result = (f"AI Found Wally In: {time_sp1}")
                         ph_ai.empty()
                         ph_ai.subheader(st.session_state.against_ai_result)
-                        # with col1.expander("Need Some Help?"):
-                            # img_size = st.session_state.orginal_image.size
-                            #if any of the cords is 0 it messes up but don't have time to solve it
-                            # cord_x = sol[0][0]/img_size[0]
-                            # cord_y = sol[0][1]/img_size[1]
-                            # if cord_x < 0.37:
-                            #     x = "Left"
-                            # elif 0.37 <= cord_x < 0.53:
-                            #     x = "Middle"
-                            # else:
-                            #     x = "Right"
-                            # if cord_y < 0.37:
-                            #     y = "Top"
-                            # elif 0.37 <= cord_x < 0.53:
-                            #     y = "Middle"
-                            # else:
-                            #     y = "Bottom"
-
-                            # st.write(f"Maybe Try To Look Closely To The {y} {x}.")
 
                         with col3.expander("I Give Up!"):
                             heatmap = np.asarray(json.loads(sol))
                             data=np.array(image)
-                            # data = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2RGB)
                             xx, yy = np.meshgrid(np.arange(heatmap.shape[2]), np.arange(heatmap.shape[1]))
                             x = (xx[heatmap[0, :, :, 0] > 0.99])
                             y = (yy[heatmap[0, :, :, 0] > 0.99])
                             for i, j in zip(x, y):
                                 y_pos = j * 3
                                 x_pos = i * 3
-                                cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0),2)
-                            # data = cv2.cvtColor(data, cv2.COLOR_RGB2BGR)
+                                cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0), 2)
                             st.image(data)
-
 
                         for secs in range(mm*60+ss,999*60,+1):
                             mm, ss = secs//60, secs%60
@@ -167,9 +161,6 @@ if add_radio == "Against Ai":
                             user_time = (f"You Found Wally At: {mm:02d}:{ss:02d}")
                         ai_found = 3
                     time.sleep(1)
-
-
-
             finally:
                 st.session_state.against_ai_user_result = user_time
                 #st.session_state.against_ai_result = (f"Ai Found Wally at: {amm:02d}:{ass:02d}")
@@ -190,11 +181,22 @@ if add_radio == "Against Ai":
                 cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0),2)
             st.image(data)
 
-        # except:
-        #     st.title("Try To Start The Game First")
+    if bt2:
+        ph_myself.subheader(st.session_state.against_ai_user_result)
+        ph_ai.subheader(st.session_state.against_ai_result)
+        st.session_state.orginal_image.empty()
+        heatmap = np.asarray(json.loads(st.session_state.sol))
+        data=np.array(image)
+        xx, yy = np.meshgrid(np.arange(heatmap.shape[2]), np.arange(heatmap.shape[1]))
+        x = (xx[heatmap[0, :, :, 0] > 0.999])
+        y = (yy[heatmap[0, :, :, 0] > 0.999])
+        for i, j in zip(x, y):
+            y_pos = j * 3
+            x_pos = i * 3
+            cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0), 2)
+        st.image(data)
 
 ### against time ###
-
 elif add_radio == "Against Time":
     bt1 = st.sidebar.button("Press To Start/Reset", key="a")
     ph_myself = col1.empty()
@@ -216,7 +218,6 @@ elif add_radio == "Against Time":
                     sonuc = N - end
                     if sonuc%60 < 10:
                         sonsonuc = (f"You spent {sonuc//60}:0{sonuc%60}")
-
                     else:
                         sonsonuc = (f"You spent {sonuc//60}:{sonuc%60}")
                     ph_myself_conc.text(sonsonuc)
@@ -231,28 +232,22 @@ elif add_radio == "Against Time":
                                 # heatmap = np.asarray(json.loads(sol))
                                 heatmap = np.asarray(json.loads(sol))
                                 data=np.array(image)
-                                # data = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2RGB)
                                 xx, yy = np.meshgrid(np.arange(heatmap.shape[2]), np.arange(heatmap.shape[1]))
                                 x = (xx[heatmap[0, :, :, 0] > 0.99])
                                 y = (yy[heatmap[0, :, :, 0] > 0.99])
                                 for i, j in zip(x, y):
                                     y_pos = j * 3
                                     x_pos = i * 3
-                                    cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0),2)
+                                    cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0), 2)
                                     # data = cv2.cvtColor(data, cv2.COLOR_RGB2BGR)
                                 st.image(data)
-                                # draw = ImageDraw.Draw(st.session_state.orginal_image)
-                                # draw.ellipse(xy= sol, fill = None , outline ='purple', width= 10)
-                                # st.session_state.orginal_image.save("drawn_result.png")
-                                # st.image(st.session_state.orginal_image)
-
                         else:
                             st.markdown("**Oops**, something went wrong 😓 Please try again.")
                             print(res.status_code, res.content)
-
             finally:
                 st.session_state.against_time_result = sonsonuc
                 st.session_state.against_time_spent = sonuc
+
     if bt2:
         try:
             if st.session_state.against_time_result != None:
