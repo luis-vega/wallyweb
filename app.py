@@ -16,9 +16,9 @@ st.set_page_config(
 
 title = st.title("Where Is Wally?")
 
-# url = 'http://localhost:8000'
-# url = 'https://lightwaldo2-bwi4mwxyya-ey.a.run.app'
-url = 'https://6ab9-213-61-167-82.eu.ngrok.io'
+url = 'http://localhost:8000'
+# url = 'https://finalwaldo-bwi4mwxyya-ey.a.run.app'
+# url = 'https://6ab9-213-61-167-82.eu.ngrok.io'
 
 ### columns and rows ###
 col1, col2, col3= st.columns(3)
@@ -84,6 +84,16 @@ if add_radio == "Against Ai":
                 sound.markdown(html_string, unsafe_allow_html=True)  # will display a st.audio with the sound you specified in the "src" of the html_string and autoplay it
                 time.sleep(2)  # wait for 2 seconds to finish the playing of the audio
                 sound.empty()  # optionally delete the element afterwards
+                time_sp = str(dt.datetime.now() - start).replace("0:", "" , 1).replace(".", ":")
+                while len(time_sp) > 5:
+                    time_sp = time_sp[0 : 5 : ] + time_sp[5 + 1 : :]
+                time_sp1 = ""
+                for q in time_sp:
+                    if time_sp.index(q)==5:
+                        q = str(int(q) - 2)
+                    time_sp1 += q
+                ai_found = True
+                start_time = int(time_sp1.replace(":",""))
                 ###
 
                 html_string = """
@@ -108,7 +118,9 @@ if add_radio == "Against Ai":
             except:
                 pass
             try:
-                for secs in range(0,999*60,+1):
+                for secs in range(start_time,999*60,+1):
+                    #start = dt.datetime.now()
+                    #title.title("Ai Is Working On It")
                     if res.status_code == 200:
                         sol = res.json()
                         st.session_state.sol = sol
@@ -122,20 +134,10 @@ if add_radio == "Against Ai":
 
                     user_time = (f"You Found Wally At: {mm:02d}:{ss:02d}")
 
-                    if sol != None :
-                        ai_found = True
-                        title.title("Where Is Wally?")
+
+                    title.title("Where Is Wally?")
 
                     if ai_found == True:
-                        time_sp = str(dt.datetime.now() - start).replace("0:", "" , 1).replace(".", ":")
-                        while len(time_sp) > 5:
-                            time_sp = time_sp[0 : 5 : ] + time_sp[5 + 1 : :]
-                        time_sp1 = ""
-                        for q in time_sp:
-                            if time_sp.index(q)==5:
-                                q = str(int(q) - 2)
-                            time_sp1 += q
-
                         st.session_state.against_ai_result = (f"AI Found Wally In: {time_sp1}")
                         ph_ai.empty()
                         ph_ai.subheader(st.session_state.against_ai_result)
@@ -161,6 +163,23 @@ if add_radio == "Against Ai":
                     time.sleep(1)
             finally:
                 st.session_state.against_ai_user_result = user_time
+                #st.session_state.against_ai_result = (f"Ai Found Wally at: {amm:02d}:{ass:02d}")
+    if bt2:
+        # try:
+            ph_myself.subheader(st.session_state.against_ai_user_result)
+            ph_ai.subheader(st.session_state.against_ai_result)
+            st.session_state.orginal_image.empty()
+            heatmap = np.asarray(json.loads(st.session_state.sol))
+            data=np.array(image)
+            # data = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2RGB)
+            xx, yy = np.meshgrid(np.arange(heatmap.shape[2]), np.arange(heatmap.shape[1]))
+            x = (xx[heatmap[0, :, :, 0] > 0.99])
+            y = (yy[heatmap[0, :, :, 0] > 0.99])
+            for i, j in zip(x, y):
+                y_pos = j * 3
+                x_pos = i * 3
+                cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0),2)
+            st.image(data)
 
     if bt2:
         ph_myself.subheader(st.session_state.against_ai_user_result)
