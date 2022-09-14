@@ -14,6 +14,7 @@ st.set_page_config(
     layout='wide'
 )
 
+
 title = st.title("Where Is Wally?")
 
 url = 'http://localhost:8000'
@@ -125,7 +126,7 @@ if add_radio == "Against Ai":
                         sol = res.json()
                         st.session_state.sol = sol
                     else:
-                        st.markdown("**Oops**, something went wrong 😓 Please try again.")
+                        st.markdown("**Oops**, something went wrong  Please try again.")
                         print(res.status_code, res.content)
 
                     mm, ss = secs//60, secs%60
@@ -154,6 +155,7 @@ if add_radio == "Against Ai":
                                 cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0), 2)
                             st.image(data)
 
+
                         for secs in range(mm*60+ss,999*60,+1):
                             mm, ss = secs//60, secs%60
                             ph_myself.metric("Your Time:", f"{mm:02d}:{ss:02d}")
@@ -169,6 +171,7 @@ if add_radio == "Against Ai":
             ph_myself.subheader(st.session_state.against_ai_user_result)
             ph_ai.subheader(st.session_state.against_ai_result)
             st.session_state.orginal_image.empty()
+
             heatmap = np.asarray(json.loads(st.session_state.sol))
             data=np.array(image)
             # data = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2RGB)
@@ -241,8 +244,9 @@ elif add_radio == "Against Time":
                                     cv2.rectangle(data, (x_pos, y_pos), (x_pos + 64, y_pos + 64), (0, 255, 0), 2)
                                     # data = cv2.cvtColor(data, cv2.COLOR_RGB2BGR)
                                 st.image(data)
+
                         else:
-                            st.markdown("**Oops**, something went wrong 😓 Please try again.")
+                            st.markdown("**Oops**, something went wrong  Please try again.")
                             print(res.status_code, res.content)
             finally:
                 st.session_state.against_time_result = sonsonuc
