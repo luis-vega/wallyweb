@@ -67,16 +67,6 @@ if add_radio == "Against Ai":
         st.session_state.result = None
     bt2 = col2.button("Found Wally", key="b")
     if bt1:
-
-        try:
-            ### Using api to reach model ###
-            title.title("Ai Is Working On It")
-            start = dt.datetime.now()
-            res = requests.post(url + "/upload_image", files={'img': img_bytes})
-            ###
-        except:
-            pass
-
         if st.session_state.orginal_image == None:
             st.title("You Might Forgot To Upload Your Image")
         else:
@@ -136,7 +126,7 @@ if add_radio == "Against Ai":
                         sol = res.json()
                         st.session_state.sol = sol
                     else:
-                        st.markdown("**Oops**, something went wrong :sweat: Please try again.")
+                        st.markdown("**Oops**, something went wrong  Please try again.")
                         print(res.status_code, res.content)
 
                     mm, ss = secs//60, secs%60
@@ -256,7 +246,7 @@ elif add_radio == "Against Time":
                                 st.image(data)
 
                         else:
-                            st.markdown("**Oops**, something went wrong :sweat: Please try again.")
+                            st.markdown("**Oops**, something went wrong  Please try again.")
                             print(res.status_code, res.content)
             finally:
                 st.session_state.against_time_result = sonsonuc

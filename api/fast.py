@@ -2,12 +2,6 @@ from fastapi import FastAPI, File, UploadFile
 from json import dumps
 from numpy import fromstring, uint8
 import cv2
-import io
-
-# import matplotlib.pyplot as plt
-from PIL import Image
-
-from fastapi import FastAPI, File, UploadFile
 from keras.models import Sequential
 from keras.layers import Dropout, Lambda,Conv2D, MaxPooling2D
 
