@@ -5,7 +5,7 @@ import numpy as np
 import cv2
 import io
 
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 from PIL import Image
 
 from fastapi import FastAPI, File, UploadFile
@@ -32,7 +32,7 @@ def get_conv(input_shape=(64, 64, 3), filename=None):
         model.load_weights(filename)
     return model
 
-heatmodel = get_conv(input_shape=(None, None, 3), filename="model_storage/localize7.h5")
+heatmodel = get_conv(input_shape=(None, None, 3), filename="localize7.h5")
 def locate(img):
     num_sub_img = 100
     data = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
