@@ -1,12 +1,16 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-# GNU Make 4.2.1
-# Built for x86_64-pc-linux-gnu
-# Copyright (C) 1988-2016 Free Software Foundation, Inc.
-# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
-# This is free software: you are free to change and redistribute it.
-# There is NO WARRANTY, to the extent permitted by law.
+# GNU Make 3.81
+# Copyright (C) 2006  Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.
+# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
 
-# Make data base, printed on Tue Aug 30 11:17:00 2022
+# This program built for i386-apple-darwin11.3.0
+ 
+make: *** No rule to make target `all'.  Stop.
+
+
+# Make data base, printed on Thu Sep  8 11:55:59 2022
 
 # Variables
 
@@ -15,171 +19,205 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # automatic
 ?F = $(notdir $?)
 # environment
-WSLENV = ELECTRON_RUN_AS_NODE/w:WT_SESSION::WT_PROFILE_ID
-# default
-.SHELLFLAGS := -c
+HOMEBREW_NO_ANALYTICS = 1
+# environment
+LC_CTYPE = UTF-8
+# environment
+VSCODE_LOG_NATIVE = false
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
+# environment
+DIRENV_WATCHES = eJyUj8FqAyEQQP_F85JxjBrde4-FXnoqPYzOhF0wEdRmW0r_vfSahULuj8d7b9_qhcaiZgWvXVqHTpe1EVOreSHIlQU2KuVrkwQHud5aVpN6rjzWi6gZvTfWRmvDpJ4-1z66mkf7kJ_pf--h1EwF-kJNgNcm1xtQKXWDSJicRkwUSKdzlMxsjhnRMYUjmuCzppDQyymi85FZzn9IMuJ8Nu6-DlH7oB-r21_vnk_aoL2zvv8GAAD__5hlbEk=
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /home/omerdondu/code/Krastro/wallyweb
+CURDIR := /Users/samiradarocha/code/wallyweb
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
+VSCODE_NLS_CONFIG = {"locale":"en-gb","availableLanguages":{},"_languagePackSupport":true}
 # environment
-_ = /mnt/c/Users/omerd/AppData/Local/Programs/Microsoft VS Code/bin/code
+_ = /usr/bin/make
 # environment
-GOOGLE_APPLICATION_CREDENTIALS = /home/omerdondu/code/omerdondu/gcp/graceful-mile-359912-bf24eefe1bd5.json
-# makefile (from 'Makefile', line 1)
+GOOGLE_APPLICATION_CREDENTIALS = /Users/samiradarocha/Desktop/Le_Wagon/le-wagon-954-6da5c17e5580.json
+# environment
+DIRENV_FILE = /Users/samiradarocha/code/wallyweb/.envrc
+# makefile (from `Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
-# 'override' directive
-GNUMAKEFLAGS := 
 # environment
-VSCODE_CWD = /mnt/c/Users/omerd/AppData/Local/Programs/Microsoft VS Code
-# default
-MAKE_HOST := x86_64-pc-linux-gnu
+VSCODE_VERBOSE_LOGGING = true
 # environment
-PATH = /home/omerdondu/.vscode-server/bin/e4503b30fc78200f846c62cf8091b76ff5547662/bin/remote-cli:/home/omerdondu/.pyenv/shims:/home/omerdondu/.pyenv/plugins/pyenv-virtualenv/shims:/home/omerdondu/.pyenv/bin:/home/omerdondu/.pyenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Users/omerd/AppData/Local/Programs/Python/Python310/Scripts/:/mnt/c/Users/omerd/AppData/Local/Programs/Python/Python310/:/mnt/c/Users/omerd/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/omerd/AppData/Local/Programs/Python/Python310:/mnt/c/Users/omerd/AppData/Local/atom/bin:/mnt/c/ProgramData/omerd/atom/bin:/mnt/c/Users/omerd/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files/heroku/bin
+__CFBundleIdentifier = com.microsoft.VSCode
+# environment
+DIRENV_DIFF = eJyEkV1vokAYRv_LXItot1pKshdUBgURdQRpezOZwsjXwIzDV6Xxv280m3SzyWavT06eN-f9AgLoX9cRqID-BYydjQPkAh2kTSN0VWU8IizldaNrk8lEbQXjJMZZSRKqghEwbQS9IzZtBHSgqEFNZa3WpMwkiYnkUUrUiMdU7Qljl55-fCuW7UKgg_8r6phWnYy-zdDwFyt4ADqgziXINetsXOB-v8OWNnM-8xcZ00fFeq34efc2bFNr0sMYleFE4u50IGngtrkWP30843Makew9CbvX43nlCzqFx62kh5XN9sHDuj3Kot-v2nhGjsKby3wIs3ny3vmnEJWdKZxHZTrM52VxeiocLE6Kkk5hbymF4yVeVE4_m_36NTQPThahog8O63hgm886Tyu0eQvysl0MQpj7y6XMtJn1PlTP9qZ1NK-dKyZbPfEXRT5McVcVmHD3Yeg6bWkYJsazlH3A4uetx3axhgjbG2MJsWdsbj1ZlqRNT1jMwQgsFzu8Q1sHLnxsmzdKlZ4kvFKeZ493jvAmcH0bI7i0t94taTtOIjnO-G_8B5BcUKWndfMDjMB99O89d7sw3Lty8NEb3hn-6l8vHjN6v0QtGRe12kiSVVmVYN42om1qcL3-CgAA__-aR9xe
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/gw/sp3m3dw161d8s1szmbg9y1wh0000gn/T/vscode-ipc-d495b762-e4c1-4fa1-bc93-9952b8ac1415.sock
+# environment
+VSCODE_CWD = /Users/samiradarocha/code/wallyweb
+# environment
+PATH = /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin:./bin:./node_modules/.bin:/Users/samiradarocha/.pyenv/plugins/pyenv-virtualenv/shims:/Users/samiradarocha/.pyenv/shims:/Users/samiradarocha/.rbenv/bin:/Users/samiradarocha/.pyenv/plugins/pyenv-virtualenv/shims:/Users/samiradarocha/.pyenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin:./bin:./node_modules/.bin:/Users/samiradarocha/.pyenv/plugins/pyenv-virtualenv/shims:/Users/samiradarocha/.rbenv/bin:/Users/samiradarocha/.pyenv/bin:/usr/local/sbin:/usr/local/sbin
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
-XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
+VIRTUAL_ENV = /Users/samiradarocha/.pyenv/versions/3.8.12/envs/whereswally
 # environment
-VIRTUAL_ENV = /home/omerdondu/.pyenv/versions/3.8.12/envs/wallyweb
+LaunchInstanceID = DB76B7E0-D5F7-4D7F-84BB-ED8764236B5C
+# environment
+LOCAL_REGISTRY_PATH = /Users/samiradarocha/.lewagon/mlops/training_outputs
+# environment
+VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-PYENV_ROOT = /home/omerdondu/.pyenv
-# environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-43a837a9-ca0d-41f8-9b94-a5e3990f5329.sock
+PYENV_ROOT = /Users/samiradarocha/.pyenv
 # default
-.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
-# environment
-SSH_AUTH_SOCK = /tmp/ssh-Wia3QmgCUE0u/agent.309
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.lnil0Jkr9J/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
-DISPLAY = :0
+VSCODE_PIPE_LOGGING = true
 # environment
-_OLD_VIRTUAL_PS1 = %(?:%{[01;32m%}➜ :%{[01;31m%}➜ ) %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)
+PWD = /Users/samiradarocha/code/wallyweb
 # environment
-PWD = /home/omerdondu/code/Krastro/wallyweb
-# default
-.LOADED := 
+API_URL = http://localhost:8000/upload_image/
 # environment
-SSH_AGENT_PID = 311
-# environment
-WSL_INTEROP = /run/WSL/6027_interop
-# environment
-PULSE_SERVER = /mnt/wslg/PulseServer
-# environment
-WT_SESSION = 79905b81-8cb6-4102-8d27-cb7fbbbad039
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 PYENV_SHELL = zsh
 # environment
-HOME = /home/omerdondu
+HOME = /Users/samiradarocha
+# default
+MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
 # environment
-LOGNAME = omerdondu
+VSCODE_CODE_CACHE_PATH = /Users/samiradarocha/Library/Application Support/Code/CachedData/da15b6fd3ef856477bf6f4fb29ba1b7af717770d
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+LOGNAME = samiradarocha
 # environment
-ZSH = /home/omerdondu/.oh-my-zsh
+BUNDLER_EDITOR = code
+# environment
+PYTHONBREAKPOINT = ipdb.set_trace
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
-MAKELEVEL := 0
+GCR_MULTI_REGION = eu.gcr.io
+# environment
+XPC_FLAGS = 0x0
+# environment
+COLORTERM = truecolor
+# environment
+IMAGE = lightwaldo
+# environment
+LC_TERMINAL = iTerm2
+# environment
+DIRENV_DIR = -/Users/samiradarocha/code/wallyweb
+# environment
+SHLVL = 2
 # default
-MAKE = $(MAKE_COMMAND)
+MAKE_VERSION := 3.81
+# environment
+USER = samiradarocha
+# makefile
+.DEFAULT_GOAL := default
 # default
 MAKECMDGOALS := all
 # environment
-SHLVL = 1
+TERM_SESSION_ID = w0t3p0:3B60F059-E742-492B-8D9C-2A92C46B3C2D
 # environment
-PYENV_ACTIVATE_SHELL = 1
-# default
-MAKE_VERSION := 4.2.1
-# environment
-USER = omerdondu
-# makefile
-.DEFAULT_GOAL := default
-# environment
-NAME = Code
+GCP_PROJECT_ID = le-wagon-954
 # environment
 LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
-# environment
-VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/omerd/.vscode/extensions/ms-vscode-remote.remote-wsl-0.66.3
 # default
-MAKE_COMMAND := make
+MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
 # environment
-OLDPWD = /mnt/c/Users/omerd/AppData/Local/Programs/Microsoft VS Code
+TERM_PROGRAM = iTerm.app
 # default
 .VARIABLES := 
+# environment
+TMPDIR = /var/folders/gw/sp3m3dw161d8s1szmbg9y1wh0000gn/T/
 # automatic
 *F = $(notdir $*)
 # environment
-PYTHONPATH = /home/omerdondu/code/omerdondu/data-challenges/04-Decision-Science:
-# makefile
-MAKEFLAGS = pqrR
+VSCODE_IPC_HOOK = /Users/samiradarocha/Library/Application Support/Code/1.67.1-main.sock
+# default
+MAKE = $(MAKE_COMMAND)
 # environment
-MFLAGS = -pqrR
+PYTHONPATH = /Users/samiradarocha/code/samira-rocha/data-challenges/04-Decision-Science:/Users/samiradarocha/code/samira-rocha/data-challenges/04-Decision-Science:
+# makefile
+MAKEFLAGS = Rrqp
+# environment
+MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
+# environment
+TERM_PROGRAM_VERSION = 3.4.16
+# environment
+NVM_DIR = /Users/samiradarocha/.nvm
+# environment
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.10049425.10049431.3B1BF739-C8B5-4750-8EBF-3BC29C76C8F4
+# environment
+LC_TERMINAL_VERSION = 3.4.16
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
 +F = $(notdir $+)
 # environment
-PYENV_VERSION = wallyweb
+ITERM_SESSION_ID = w0t3p0:3B60F059-E742-492B-8D9C-2A92C46B3C2D
 # environment
-VSCODE_HANDLES_SIGPIPE = true
+COLORFGBG = 7;0
 # environment
-WT_PROFILE_ID = {2c4de342-38b7-51cf-b940-2309a097f518}
+__CF_USER_TEXT_ENCODING = 0x1F5:0x0:0x0
+# environment
+COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
 # automatic
 <F = $(notdir $<)
 # environment
-PS1 = (wallyweb) %(?:%{[01;32m%}➜ :%{[01;31m%}➜ ) %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)
+ITERM_PROFILE = Default
+# environment
+EDITOR = code
 # environment
 PAGER = less
 # environment
+DOCKER_IMAGE_NAME = lightwaldo
+# environment
 LC_ALL = C
 # environment
-PYENV_VIRTUAL_ENV = /home/omerdondu/.pyenv/versions/3.8.12/envs/wallyweb
+PYENV_VIRTUALENV_DISABLE_PROMPT = 1
 # environment
-HOSTTYPE = x86_64
+PYENV_VIRTUAL_ENV = /Users/samiradarocha/.pyenv/versions/3.8.12/envs/whereswally
+# environment
+SECURITYSESSIONID = 186a3
 # automatic
 ^F = $(notdir $^)
 # default
 SUFFIXES := 
 # environment
-WAYLAND_DISPLAY = wayland-0
-# environment
 PYENV_VIRTUALENV_INIT = 1
 # default
-.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
-# default
-.RECIPEPREFIX := 
+.INCLUDE_DIRS = /usr/local/include
+# environment
+MAKELEVEL := 0
+# environment
+GCR_REGION = europe-west3
 # environment
 LANG = C
 # environment
 TERM = xterm-256color
 # environment
-WSL_DISTRO_NAME = Ubuntu
+VSCODE_PID = 18644
 # variable set hash-table stats:
-# Load=84/1024=8%, Rehash=0, Collisions=4/109=4%
+# Load=101/1024=10%, Rehash=0, Collisions=7/125=6%
 
 # Pattern-specific Variable Values
 
@@ -187,9 +225,9 @@ WSL_DISTRO_NAME = Ubuntu
 
 # Directories
 
-# . (device 2080, inode 254075): 9 files, no impossibilities.
+# . (device 16777224, inode 19697510): 24 files, no impossibilities.
 
-# 9 files, no impossibilities in 1 directories.
+# 24 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -199,31 +237,43 @@ WSL_DISTRO_NAME = Ubuntu
 
 # Not a target:
 all:
-#  Command line target.
+#  Command-line target.
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has not been updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 install_requirements:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 17):
+#  commands to execute (from `Makefile', line 17):
 	@pip install -r requirements.txt
+	
 
 pytest:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 10):
+#  commands to execute (from `Makefile', line 10):
 	echo "no tests"
+	
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-30 10:59:04.3433977
+#  Last modified 2022-09-02 11:03:14
 #  File has been updated.
 #  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 default: pytest
 #  Implicit rule search has not been done.
@@ -231,26 +281,30 @@ default: pytest
 #  File has not been updated.
 
 heroku_login:
+ 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 27):
+#  commands to execute (from `Makefile', line 27):
 	-@heroku login
+	
 
 heroku_create_app:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 33):
+#  commands to execute (from `Makefile', line 33):
 	-@heroku create --ssh-git ${APP_NAME}
+	
 
 deploy_heroku:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 36):
+#  commands to execute (from `Makefile', line 36):
 	-@git push heroku master
 	-@heroku ps:scale web=1
+	
 
 # Not a target:
 .DEFAULT:
@@ -262,53 +316,53 @@ heroku_upload_public_key:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 30):
+#  commands to execute (from `Makefile', line 30):
 	-@heroku keys:add ~/.ssh/id_ed25519.pub
+	
 
 clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 46):
+#  commands to execute (from `Makefile', line 46):
 	@rm -fr */__pycache__
 	@rm -fr __init__.py
 	@rm -fr build
 	@rm -fr dist
 	@rm -fr *.dist-info
- 
-make: *** No rule to make target 'all'.  Stop.
-
 	@rm -fr *.egg-info
 	-@rm model.joblib
+	
 
 streamlit:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 24):
+#  commands to execute (from `Makefile', line 24):
 	-@streamlit run app.py
+	
 
 install:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  commands to execute (from `Makefile', line 43):
 	@pip install . -U
+	
 
 # files hash-table stats:
-# Load=14/1024=1%, Rehash=0, Collisions=0/26=0%
+# Load=14/1024=1%, Rehash=0, Collisions=0/27=0%
 # VPATH Search Paths
 
-# No 'vpath' search paths.
+# No `vpath' search paths.
 
-# No general ('VPATH' variable) search path.
+# No general (`VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 24 / storage = 261 B / avg = 10 B
-# current buf: size = 8162 B / used = 261 B / count = 24 / avg = 10 B
+# # of strings in strcache: 1
+# # of strcache buffers: 1
+# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# strcache performance: lookups = 39 / hit rate = 38%
-# hash-table stats:
-# Load=24/8192=0%, Rehash=0, Collisions=1/39=3%
-# Finished Make data base on Tue Aug 30 11:17:00 2022
+# Finished Make data base on Thu Sep  8 11:55:59 2022
 
  
